@@ -11,15 +11,16 @@ It is structured for clarity, reproducibility, and ease of compilation.
 
 .
 ├── homework-01/
-│   ├── main.tex        # LaTeX source file
-│   ├── main.pdf        # Compiled homework
-│   └── images/         # Diagrams / figures (if any)
+│   ├── main.tex                # LaTeX source file
+│   ├── main.pdf                # Compiled homework
+│   └── images/                 # Diagrams / figures (if any)
 ├── homework-02/
 │   ├── main.tex
 │   ├── main.pdf
 │   └── images/
 ├── templates/
 │   └── homework-template.tex
+├── CEDT-Homework-style.sty     # Styling
 └── README.md
 
 ````
