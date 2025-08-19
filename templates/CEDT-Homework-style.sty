@@ -1,0 +1,257 @@
+% CEDT-Homework-style.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{CEDT-Homework-style}[2025/08/14 CEDT Math Homework Style]
+
+
+% =========================== Basic packages ===========================
+\RequirePackage{amsmath, amssymb, amsthm} % Math environments and symbols
+\RequirePackage{geometry} % Page margins
+\RequirePackage{fancyhdr} % Headers and footers
+\RequirePackage{enumitem} % Custom lists
+\RequirePackage{hyperref} % Clickable references
+\RequirePackage{tikz} % For possible future diagrams
+\RequirePackage{xcolor} % Color support
+
+
+% Use Package
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{environ}
+\usepackage{amssymb}
+\usepackage{mdframed}
+\usepackage[most]{tcolorbox}
+
+\usepackage{amsmath}
+\allowdisplaybreaks
+
+
+% =========================== Page setup ===========================
+\geometry{
+  a4paper,
+  left=3cm,
+  right=3cm,
+  top=3cm,
+  bottom=3cm,
+}
+\sectionfont{\large}
+
+
+% =========================== Header and footer setup ===========================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{}
+
+\newcommand{\subject}[1][2110205 - Statistics for Computer Engineering]{
+  \fancyhead[L]{\textbf{#1}}
+}
+
+
+% =========================== Title command ===========================
+\newcommand{\hwtitle}[4]{
+  \begin{center}
+    {\LARGE \bfseries Homework #1} \\[6pt]
+    {\large #2} \\[2pt] % Course name
+    {\small \text{#3}} \\ % Your name or instructor
+    \ifx&#4&%
+      % nothing if optional argument is empty
+    \else
+      {\small \textit{Collaborators.} #4}%
+    \fi
+  \end{center}
+  \vspace{12pt}
+  \hrule
+  \vspace{12pt}
+}
+
+
+% =========================== Problem environment ===========================
+%Counter
+\newcounter{problem}
+\renewcommand{\theproblem}{\arabic{problem}}
+
+% Storage for used numbers
+\newcommand{\usedproblems}{}
+
+% Recursive macro to find next unused number
+\newcommand{\nextunusedproblem}{
+  \stepcounter{problem}
+  \edef\thisNum{\theproblem}
+  \ifinlist{\thisNum}{\usedproblems}
+    {\nextunusedproblem} % continue recursion
+    {} % stop if unused
+}
+
+\newenvironment{problem}[1][]{
+  \vspace{1em}
+  \def\maybeNum{#1}
+  \ifx\maybeNum\empty
+    % auto mode
+    \nextunusedproblem
+  \else
+    % manual mode
+    \setcounter{problem}{\maybeNum}
+    \edef\thisNum{\theproblem}
+    \ifinlist{\thisNum}{\usedproblems}
+      {\PackageWarning{problem}{Problem number \thisNum\space already used; reusing it}}%
+      {}
+  \fi
+  % Now record number only once
+  \ifinlist{\thisNum}{\usedproblems}{}{
+    \listadd{\usedproblems}{\thisNum}
+  }
+  % Typeset
+  \par\noindent\textbf{Problem \thisNum. }\ignorespaces
+}{
+  \par\vspace{10pt}
+}
+
+
+% =========================== Common math shortcuts ===========================
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\sqbracket}[1]{\left[#1\right]}
+
+
+% =========================== Theorem styles ===========================
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+
+% =========================== Custom enumerate for subproblems ===========================
+\newlist{subproblems}{enumerate}{1}
+\setlist[subproblems]{
+  label=\textbf{\alph*)},
+  wide=0pt,
+  itemsep=2pt,
+  parsep=0pt,
+  leftmargin=*
+}
+
+
+% =========================== Hyperref setup ===========================
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=cyan,
+  citecolor=blue,
+}
+
+
+% =========================== Solution ===========================
+\newtcolorbox{solution}[1][]{
+  enhanced,
+  breakable,
+  colback=gray!5!white,
+  colframe=gray!75!black,
+  fonttitle=\bfseries,
+  title=Solution.\enspace,
+  coltitle=gray!75!black,
+  attach title to upper,
+  boxed title style=colback=gray!25!white,
+  #1,
+}
+% \newcommand{\proof}{\par\noindent\textbf{\textcolor{black}{Proof.\enspace}}}
+
+% =========================== To Submit ===========================
+\newtcolorbox{tosubmit}[1][]{
+  enhanced,
+  breakable,
+  colback=yellow!5!white,
+  colframe=red!65!black,
+  fonttitle=\bfseries,
+  title=TO SUBMIT,
+  coltitle=white,
+  attach boxed title to top center={yshift=-2mm}, % center title
+  boxed title style={
+    colback=red!65!black,     % background of title
+    colframe=red!65!black,    % border same as background
+    width=0.5\linewidth,      % make title box narrower
+    sharp corners,            % or rounded corners
+    boxrule=0pt,              % remove border line
+    enlarge left by=0mm,
+    enlarge right by=0mm,
+    halign=center,            % center text inside
+  },
+  parbox=false,
+  #1,
+}
+
+\newtcolorbox{submit-solution}[1][]{
+  enhanced,
+  colback=red!3!white,
+  colframe=red!50!black,
+  fonttitle=\bfseries,
+  title=Solution.\enspace,
+  coltitle=red!50!black,
+  attach title to upper,
+  boxed title style={colback=red!10!white},
+  #1,
+}
+
+\newcommand{\submitsolution}{\par\noindent\textbf{\textcolor{red!50!black}{Solution.\enspace}}}
+
+    
+% =========================== Coding ===========================
+\tcbuselibrary{listings,breakable,skins}
+
+% Custom colors
+\definecolor{codebg}{RGB}{240, 248, 255}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.25,0.35,0.75}
+
+% Listings style
+\lstdefinestyle{mycodingstyle}{
+    language=Python,
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{codeblue}\bfseries,
+    commentstyle=\color{codegreen},
+    stringstyle=\color{codepurple},
+    numberstyle=\tiny\color{codegray},
+    numbers=left,
+    numbersep=8pt,
+    stepnumber=1,
+    frame=none,
+    breaklines=true,
+    breakatwhitespace=false,
+    showstringspaces=false,
+    keepspaces=true,
+    captionpos=b,
+    tabsize=2,
+}
+
+\newtcblisting{codingbox}[1][]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=white,
+  boxrule=0pt,
+  width=0.9\linewidth,
+  box align=center,
+  listing engine=listings,
+  listing only,
+  listing options={style=mycodingstyle,#1}
+}
