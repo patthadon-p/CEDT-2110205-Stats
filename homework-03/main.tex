@@ -1,6 +1,7 @@
 \documentclass[a4paper, 10pt]{article}
 \usepackage{CEDT-Homework-style}
 
+\usepackage{booktabs}
 \usepackage{amsmath}
 \allowdisplaybreaks
 
@@ -23,27 +24,135 @@
 \begin{problem}
 A complex bet on a race has a payout value, \( X \), determined by which tier
 of horse wins. The probability mass function (PMF) is given below:
+\par\noindent
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|l|c|c|c|c|c|}
+        \hline
+        \textbf{Payout Value, \( k \) (\$)} & 0 & 10 & 50 & 100 \\ 
+        \hline
+        \textbf{pmf \( P(X = k) \)} & 0.65 & ? & 0.10 & 0.05 \\
+        \hline
+    \end{tabular}
+    \label{tab:hw03-pb01}
+\end{table}
+
+\begin{subproblems}
+    \item What is the probability of winning a \$10 payout, \( P(X = 10) \)?
+    \item  Calculate the cumulative distribution function value at 50, \( F(50) \).
+\end{subproblems}
 \end{problem}
 
 \begin{solution}
-The solution goes here.
+Because, the total PMF value for all possible outcomes is \( 1 \),
+\[
+    \sum_{\text{all} k} P(X = k) = 1
+\]
+Thus, we can find the missing PMF value:
+\begin{align*}
+    1 &= P(X = 0) + P(X = 10) + P(X = 50) + P(X = 100) \\
+    1 &= 0.65 + P(X = 10) + 0.10 + 0.05 \\
+    P(X = 10) &= 1 - 0.65 - 0.10 - 0.05 \\
+    P(X = 10) &= \boxed{0.20} \; \textbf{a).}
+\end{align*}
+The cumulative distribution function (CDF) value at 50, \( F(50) \),
+is the sum of the PMF values for all outcomes less than or equal to 50:
+\begin{align*}
+    F(50) &= P(X = 0) + P(X = 10) + P(X = 50) \\
+    F(50) &= 0.65 + 0.20 + 0.10 \\
+    F(50) &= \boxed{0.95} \; \textbf{b).}
+\end{align*}
 \end{solution}
 % ================================================================================ %
 
 
 % ================================================================================ %
-%                                    Problem 0y                                    %
+%                                    Problem 05                                    %
 % ================================================================================ %
 \begin{tosubmit}
-\problem
-Here's the problem statement for \textbf{MANDATORY} problem.
+\problem[5]
+A long-shot horse named ``Hopeful'' has only a 5\% chance of winning any given race.
+Let \( X \) be the number of races he runs until he achieves his first win.
+\begin{subproblems}
+    \item What is the probability that Hopeful wins on his 4th race?
+    \item What is the probability that his first win occurs after the 2nd race?
+\end{subproblems}
 
 \par\noindent\submitsolution
-Here's the solution for the \textbf{MANDATORY} problem. \\
-ABC.
+The probability of ``Hopeful'' winning the 4th race is the same with the probability of winning--\(\boxed{0.05}\). \textbf{a).}
 
-\proof
-Here's the proof for the \textbf{MANDATORY} problem.
+\noindent The probability that his first win occurs after the 2nd race is
+the same with the probability of losing the first 2 races,
+\[
+    P(\text{first win occurs after 2nd race}) = \paren{0.95 \times 0.95} = \boxed{0.9025} \; \textbf{b).}  \\
+\]
+\end{tosubmit}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 07                                    %
+% ================================================================================ %
+\begin{tosubmit}
+\problem[7]
+A star jockey has a 30\% chance of winning any given race.
+Let \( X \) be his number of wins in the 3 morning races, and \( Y \) be his number of wins in the 2 afternoon races.
+Assume his performance is independent between races.
+Let \( Z = X + Y \) be his total wins for the day.
+
+\begin{subproblems}
+    \item What is the distribution of \( Z \) and what are its parameters?
+    \item What is the probability that he wins exactly 2 races all day, \( P(Z = 2) \)?
+\end{subproblems}
+
+\par\noindent\submitsolution
+\textbf{a).} \, The distribution of \( Z \) is a binomial distribution
+with parameters \( n = 5 \) (the total number of races) and \( p = 0.3 \) (the probability of winning any given race).
+
+\noindent The probability mass function (PMF) of a binomial distribution is given by
+\[
+    P(Z = k) = \binom{n}{k} p^k (1-p)^{n-k}
+\]
+Thus, the probability that he wins exactly 2 races all day is
+\[
+    P(Z = 2) = \binom{5}{2} (0.3)^2 (0.7)^3 = 10 \cdot 0.09 \cdot 0.343 = \boxed{0.3087} \; \textbf{b).}
+\]
+\end{tosubmit}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 12                                    %
+% ================================================================================ %
+\begin{tosubmit}
+\problem[12]
+A trainer has two horses. Horse A is in a race where its probability of winning is 0.1.
+Horse B is in a separate race where its probability of winning is 0.2.
+Let \( Z \) be the total number of wins for the trainer.
+Find the probability mass function (PMF) for \( Z \).
+
+\vspace{0.5em}
+\par\noindent\submitsolution
+Let \( X_A\sim \text{Bernoulli}(0.1) \) for Horse A, \( X_B\sim \text{Bernoulli}(0.2) \) for Horse B. \\
+Thus, \( Z=X_A+X_B \) with possible values: \( z\in\{0, 1, 2\} \).
+
+\begin{itemize}
+    \item \( P(Z=0)=P(A\text{ loses})P(B\text{ loses})=(1-0.1)(1-0.2)=0.9\cdot0.8=0.72 \)
+    \item \( P(Z=2)=P(A\text{ wins})P(B\text{ wins})=0.1\cdot0.2=0.02 \)
+    \item \( P(Z=1)=1-P(Z=0)-P(Z=2)=1-0.72-0.02=0.26 \)
+\end{itemize}
+
+So the PMF is:
+\[\boxed{
+    P(Z = z) =
+    \begin{cases}
+    0.72, & z=0\\
+    0.26, & z=1\\
+    0.02, & z=2\\
+    0, & \text{otherwise.}
+    \end{cases}
+}\]
 \end{tosubmit}
 % ================================================================================ %
 
