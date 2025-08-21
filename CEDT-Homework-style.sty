@@ -20,6 +20,7 @@
 \usepackage{environ}
 \usepackage{amssymb}
 \usepackage{mdframed}
+\usepackage{booktabs}
 \usepackage[most]{tcolorbox}
 
 \usepackage{amsmath}
@@ -169,7 +170,6 @@
   boxed title style=colback=gray!25!white,
   #1,
 }
-% \newcommand{\proof}{\par\noindent\textbf{\textcolor{black}{Proof.\enspace}}}
 
 % =========================== To Submit ===========================
 \newtcolorbox{tosubmit}[1][]{
@@ -180,7 +180,8 @@
   fonttitle=\bfseries,
   title=TO SUBMIT,
   coltitle=white,
-  attach boxed title to top center={yshift=-2mm}, % center title
+  attach boxed title to top center={yshift=-2mm}, % center title,
+  before upper={\setlength{\parindent}{0pt}\noindent},
   boxed title style={
     colback=red!65!black,     % background of title
     colframe=red!65!black,    % border same as background
