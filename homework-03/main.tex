@@ -66,6 +66,7 @@ is the sum of the PMF values for all outcomes less than or equal to 50:
 \end{solution}
 % ================================================================================ %
 
+\pagebreak
 
 % ================================================================================ %
 %                                    Problem 02                                    %
@@ -120,6 +121,50 @@ with no bias toward any specific number, so the assignment follows a discrete un
 \end{solution}
 % ================================================================================ %
 
+\pagebreak
+
+% ================================================================================ %
+%                                    Problem 04                                    %
+% ================================================================================ %
+\begin{problem}
+The horse ``Gallant Prince'' wins 20\% of the races it enters.
+Let \( X \) be the number of wins for Gallant Prince in his next 4 races.
+Assume the outcomes are independent.
+\begin{subproblems}
+    \item Calculate the probability that he wins exactly one race, \( P(X = 1) \).
+    \item Calculate the probability that he wins no races, \( P(X = 0) \).
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+The probability that Gallant Prince wins exactly \( k \) races out of \( n \) races
+can be calculated using the Binomial distribution formula:
+\[
+    P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}
+\]
+where \( n = 4 \) (the number of races), and \( p = 0.2 \) (the probability of winning a race).
+
+\par\noindent\textbf{a).} \, The probability that Gallant Prince wins exactly \textbf{one race} out of 4 is given by
+\begin{align*}
+    P(X = 1) &= \binom{4}{1} (0.2)^1 (0.8)^{4-1} \\
+    &= 4 \cdot 0.2 \cdot (0.8)^3 \\
+    &= 4 \cdot 0.2 \cdot 0.512 \\
+    &= 0.4096 \\
+    &= \boxed{0.4096} \; \textbf{a).}
+\end{align*}
+
+\par\noindent\textbf{b).} \, The probability that Gallant Prince wins \textbf{no races} out of 4 is given by
+\begin{align*}
+    P(X = 0) &= \binom{4}{0} (0.2)^0 (0.8)^{4-0} \\
+    &= 1 \cdot 1 \cdot (0.8)^4 \\
+    &= (0.8)^4 \\
+    &= 0.4096 \\
+    &= \boxed{0.4096} \; \textbf{b).}
+\end{align*}
+
+\end{solution}
+% ================================================================================ %
+
 
 % ================================================================================ %
 %                                    Problem 05                                    %
@@ -144,6 +189,46 @@ the same with the probability of losing the first 2 races,
 \end{tosubmit}
 % ================================================================================ %
 
+\pagebreak
+
+% ================================================================================ %
+%                                    Problem 06                                    %
+% ================================================================================ %
+\begin{problem}
+The number of jockey suspensions for misconduct at a large racetrack
+follows a Poisson distribution with an average of 2 suspensions per week.
+\begin{subproblems}
+    \item What is the probability of having exactly one suspension in a given week?
+    \item What is the probability of having no suspensions in a given week?
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+The number of jockey suspensions for misconduct at a large racetrack follows a Poisson distribution
+with parameter \( \lambda = 2 \) (the average number of suspensions per week).
+
+The probability of having exactly \( k \) events (suspensions) in a Poisson distribution is given by the formula:
+\[
+    P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
+\]
+
+\par\noindent\textbf{a).} \, For exactly one suspension (\( k = 1 \)):
+\begin{align*}
+    P(X = 1) &= \frac{2^1 e^{-2}}{1!} \\
+    &= 2 e^{-2} \\
+    &\approx 2 \cdot 0.1353 \\
+    &\approx \boxed{0.2706} \; \textbf{a).}
+\end{align*}
+
+\par\noindent\textbf{b).} \, For no suspensions (\( k = 0 \)):
+\begin{align*}
+    P(X = 0) &= \frac{2^0 e^{-2}}{0!} \\
+    &= e^{-2} \\
+    &\approx \boxed{0.1353} \; \textbf{b).}
+\end{align*}
+\end{solution}
+% ================================================================================ %
+
 
 % ================================================================================ %
 %                                    Problem 07                                    %
@@ -161,10 +246,13 @@ Let \( Z = X + Y \) be his total wins for the day.
 \end{subproblems}
 
 \par\noindent\submitsolution
-\textbf{a).} \, The distribution of \( Z \) is a binomial distribution
-with parameters \( n = 5 \) (the total number of races) and \( p = 0.3 \) (the probability of winning any given race).
+The distribution of \( Z \) is a binomial distribution with parameters \( n = 5 \) (the total number of races)
+and \( p = 0.3 \) (the probability of winning any given race).
+\par\noindent Thus, \( \boxed{Z \sim \text{Binomial}(5,\, 0.3)} \). \textbf{a).}
 
-\noindent The probability mass function (PMF) of a binomial distribution is given by
+\vspace{2mm}
+
+\par\noindent The probability mass function (PMF) of a binomial distribution is given by
 \[
     P(Z = k) = \binom{n}{k} p^k (1-p)^{n-k}
 \]
@@ -173,6 +261,153 @@ Thus, the probability that he wins exactly 2 races all day is
     P(Z = 2) = \binom{5}{2} (0.3)^2 (0.7)^3 = 10 \cdot 0.09 \cdot 0.343 = \boxed{0.3087} \; \textbf{b).}
 \]
 \end{tosubmit}
+% ================================================================================ %
+
+\pagebreak
+
+% ================================================================================ %
+%                                    Problem 08                                    %
+% ================================================================================ %
+\begin{problem}
+In an 8-horse race, a gambler places a simple \underline{win} bet on a single horse, ``Lucky Number 7''.
+Assume all horses have an equal chance of winning.
+Let the random variable \( X = 1 \) if Lucky Number 7 wins and \( X = 0 \) if it loses.
+\begin{subproblems}
+    \item What is the name of the probability distribution for \( X \)?
+    \item Find the probability mass function (PMF) of \( X \).
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+\par\noindent\textbf{a).} \, The probability distribution for \( X \) is a \( \boxed{\textbf{Bernoulli distribution}} \).
+Because \( X \) can take on only two possible outcomes: winning (1) or losing (0).
+
+\vspace{2mm}
+
+\par\noindent\textbf{b).} \, The probability mass function (PMF) of \( X \) is given by:
+\[\boxed{
+    P(X = x) =
+    \begin{cases}
+    \frac{1}{8}, & x=1\\
+    \frac{7}{8}, & x=0\\
+    0, & \text{otherwise.}
+    \end{cases}
+}\]
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 09                                    %
+% ================================================================================ %
+\begin{problem}
+A `Daily Double' bet requires picking the winners of two consecutive races.
+A gambler chooses one horse in the first race (8 horses, all equal chance) and
+one horse in the second race (10 horses, all equal chance).
+Let \( Z = 1 \) if the gambler wins the bet and \( Z = 0 \) if they lose. What is \( P(Z = 1) \)?
+\end{problem}
+
+\begin{solution}
+To win the `Daily Double' bet, the gambler must correctly pick the winners of both:
+\par 1. \textbf{The first race}: There are 8 horses, so the probability of picking the winning horse is \( \frac{1}{8} \).
+\par 2. \textbf{The second race}: There are 10 horses, so the probability of picking the winning horse is \( \frac{1}{10} \).
+
+\vspace{2mm}
+
+Thus, the probability of winning the `Daily Double' bet is:
+\[
+    P(Z = 1) = P(\text{win first}) \times P(\text{win second}) = \frac{1}{8} \times \frac{1}{10} = \frac{1}{80} = 0.0125.
+\]
+
+So that, \( P(Z = 0) = 1 - P(Z = 1) = 1 - 0.0125 = 0.9875 \).
+\[\boxed{
+    P(Z = z) =
+    \begin{cases}
+    0.0125, & z=1\\
+    0.9875, & z=0\\
+    0, & \text{otherwise.}
+    \end{cases}
+}\]
+
+\end{solution}
+% ================================================================================ %
+
+\pagebreak
+
+% ================================================================================ %
+%                                    Problem 10                                    %
+% ================================================================================ %
+\begin{problem}
+The number of photo-finishes on a clear day is a Poisson random variable with mean 1.5.
+The number on a rainy day is an independent Poisson random variable with mean 3.
+Let \( W \) be the total number of photo-finishes from one clear day and one rainy day.
+\begin{subproblems}
+    \item What is the distribution of \( W \) and its mean?
+    \item What is the probability of observing a total of exactly 4 photo-finishes?
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+Let \( X \) be the number of photo-finishes on a clear day, and \( Y \) be the number on a rainy day.
+Since \( X \) and \( Y \) are independent Poisson random variables, their sum \( W = X + Y \) is also a Poisson random variable.
+The mean of \( W \) is the sum of the means of \( X \) and \( Y \):
+\[
+    \lambda_W = \lambda_X + \lambda_Y = 1.5 + 3 = 4.5.
+\]
+Thus, \( \boxed{W \sim \text{Poisson}(4.5)} \). \textbf{a).}
+
+\vspace{2mm}
+
+\par\noindent The probability of observing exactly \( k \) events in a Poisson distribution is given by:
+\[
+    P(W = k) = \frac{\lambda_W^k e^{-\lambda_W}}{k!}
+\]
+For exactly 4 photo-finishes (\( k = 4 \)):
+\begin{align*}
+    P(W = 4) &= \frac{\paren{4.5}^4 e^{-4.5}}{4!} \\
+    &= \frac{410.0625 e^{-4.5}}{24} \\
+    &\approx \frac{410.0625 \times 0.0111}{24} \\
+    &\approx \frac{4.5517}{24} \\
+    &\approx \boxed{0.1897} \; \textbf{b).}
+\end{align*}
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 11                                    %
+% ================================================================================ %
+\begin{problem}
+The CDF for the number of wins (\( X \)) for a young horse in its first season is given below:
+\[
+    F(x) =
+    \begin{cases}
+    0, & x < 0\\
+    0.5, & 0 \leq x < 1\\
+    0.8, & 1 \leq x < 2\\
+    0.95, & 2 \leq x < 3\\
+    1, & x \geq 3
+    \end{cases}
+\]
+\begin{subproblems}
+    \item Find the probability that the horse wins exactly 2 races, \( P(X = 2) \).
+    \item Find the probability that the horse wins more than 1 race, \( P(X > 1) \).
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+\par\noindent\textbf{a).} \, The probability that the horse wins exactly 2 races, \( P(X = 2) \), can be found using the CDF:
+\[
+    P(X = 2) = F(2) - F(1) = 0.95 - 0.8 = \boxed{0.15} \; \textbf{a).}
+\]
+
+\vspace{2mm}
+
+\par\noindent\textbf{b).} \, The probability that the horse wins more than 1 race, \( P(X > 1) \), is given by:
+\[
+    P(X > 1) = 1 - P(X \leq 1) = 1 - F(1) = 1 - 0.8 = \boxed{0.2} \; \textbf{b).}
+\]
+\end{solution}
 % ================================================================================ %
 
 
@@ -208,6 +443,113 @@ So the PMF is:
     \end{cases}
 }\]
 \end{tosubmit}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 13                                    %
+% ================================================================================ %
+\begin{problem}
+Calculate the following probabilities for a racing season:
+\begin{subproblems}
+    \item A jockey has a 10\% win rate. Find the probability he wins at least once in his next 5 races.
+    \( P(X \geq 1) \) for \( X \sim Binomial(5, 0.1) \).
+    \item The average number of scratches per day is 2.5. Find the probability there are fewer than 2 scratches on a given day.
+    \( P(Y < 2) \) for \( Y \sim Poisson(2.5) \).
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+\par\noindent\textbf{a).} \, \( X \sim Binomial(5, 0.1) \)
+\begin{align*}
+    P(X \geq 1) &= 1 - P(X = 0) \\
+    &= 1 - \paren{\binom{5}{0} (0.1)^0 (0.9)^5} \\
+    &= 1 - \paren{1 \cdot 1 \cdot (0.9)^5} \\
+    &= 1 - (0.59049) \\
+    &= \boxed{0.40951} \; \textbf{a).}
+\end{align*}
+
+\vspace{2mm}
+
+\par\noindent\textbf{b).} \, \( Y \sim Poisson(2.5) \)
+\begin{align*}
+    P(Y < 2) &= P(Y = 0) + P(Y = 1) \\
+    &= \frac{(2.5)^0 e^{-2.5}}{0!} + \frac{(2.5)^1 e^{-2.5}}{1!} \\
+    &= e^{-2.5} + 2.5 e^{-2.5} \\
+    &= (1 + 2.5) e^{-2.5} \\
+    &= 3.5 e^{-2.5} \\
+    &\approx 3.5 \cdot 0.0821 \\
+    &\approx \boxed{0.28735} \; \textbf{b).}
+\end{align*}
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 14                                    %
+% ================================================================================ %
+\begin{problem}
+A jockey is scheduled for 7 races in a festival. His probability of winning any single race is 0.15.
+What is the probability he wins at least two races during the festival?
+\end{problem}
+
+\begin{solution}
+The probability that the jockey wins \( n \) races out of \( k \) races
+can be calculated using the Binomial distribution formula:
+\[
+    P(X = n) = \binom{k}{n} p^n (1-p)^{k-n}
+\]
+In this case, \( k = 7 \) (the number scheduled races), and \( p = 0.15 \) (the probability of winning).
+
+\par\noindent The probability that he wins at least 2 races is:
+\begin{align*}
+    P(X \geq 2) &= 1 - P(X < 2) \\
+    &= 1 - (P(X = 0) + P(X = 1)) \\
+    &= 1 - \paren{ \binom{7}{0} (0.15)^0 (0.85)^7 + \binom{7}{1} (0.15)^1 (0.85)^6 } \\
+    &= 1 - \paren{ 1 \cdot 1 \cdot (0.85)^7 + 7 \cdot 0.15 \cdot (0.85)^6 } \\
+    &= 1 - \paren{ (0.85)^7 + 1.05 \cdot (0.85)^6 } \\
+    &\approx 1 - \paren{ 0.3235 + 1.05 \cdot 0.3807 } \\
+    &\approx 1 - (0.3235 + 0.3997) \\
+    &\approx 1 - 0.7232 \\
+    &\approx \boxed{0.2768}
+\end{align*}
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 15                                    %
+% ================================================================================ %
+\begin{problem}
+In a 4-horse race, the probabilities of winning for each horse are:
+Horse 1: 0.4, Horse 2: 0.3, Horse 3: 0.2, Horse 4: 0.1.
+Let the random variable \( X \) be the number of the winning horse.
+\begin{subproblems}
+    \item Write out the probability mass function (PMF) for \( X \).
+    \item Find the probability that the winning horse's number is odd.
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+\par\noindent\textbf{a).} \, The probability mass function (PMF) for \( X \) is:
+\[\boxed{
+    P(X = x) =
+    \begin{cases}
+    0.4, & x=1\\
+    0.3, & x=2\\
+    0.2, & x=3\\
+    0.1, & x=4\\
+    0, & \text{otherwise.}
+    \end{cases}
+}\]
+
+\vspace{2mm}
+
+\par\noindent\textbf{b).} \, The probability that the winning horse's number is odd (Horse 1 or Horse 3) is:
+\[
+    P(X \text{ is odd}) = P(X = 1) + P(X = 3) = 0.4 + 0.2 = \boxed{0.6}
+\]
+\end{solution}
 % ================================================================================ %
 
 
