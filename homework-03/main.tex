@@ -40,7 +40,7 @@ of horse wins. The probability mass function (PMF) is given below:
 
 \begin{subproblems}
     \item What is the probability of winning a \$10 payout, \( P(X = 10) \)?
-    \item  Calculate the cumulative distribution function value at 50, \( F(50) \).
+    \item Calculate the cumulative distribution function value at 50, \( F(50) \).
 \end{subproblems}
 \end{problem}
 
@@ -63,6 +63,60 @@ is the sum of the PMF values for all outcomes less than or equal to 50:
     F(50) &= 0.65 + 0.20 + 0.10 \\
     F(50) &= \boxed{0.95} \; \textbf{b).}
 \end{align*}
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 02                                    %
+% ================================================================================ %
+\begin{problem}
+Are the following statements true or false?
+\begin{subproblems}
+    \item The number of a horse's wins in its next 10 races can be modeled by a Geometric distribution.
+    \item The PMF of a bet's outcome (a numerical value for win/loss) cannot be negative.
+    \item The number of races until a specific long-shot horse wins for the first time is a random variable that can,
+    in theory, take on an infinitely large value.
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+\par\noindent\textbf{a).} \, \( \boxed{\textbf{False.}} \) The number of wins in a fixed number of races (like 10) follows a Binomial distribution, not a Geometric distribution.
+\par\noindent\textbf{b).} \, \( \boxed{\textbf{True.}} \) The PMF of a bet's outcome cannot be negative, as it represents probabilities.
+\par\noindent\textbf{c).} \, \( \boxed{\textbf{True.}} \) The number of races until the first win can be infinitely large, as it includes the possibility of never winning.
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 03                                    %
+% ================================================================================ %
+\begin{problem}
+For each scenario, what is the most appropriate discrete probability distribution?
+(Choose from Bernoulli, Binomial, Geometric, Poisson, or Discrete Uniform).
+\begin{subproblems}
+    \item The number of wins for the champion horse \textit{Sure Bet} in his next 8 races, given he has a fixed probability of winning each race.
+    \item The number of false starts during a full day of 12 races at the track.
+    \item The starting gate number (from 1 to 8) assigned to a horse, assuming all gates are assigned randomly.
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+\vspace{2mm}
+
+\par\noindent\textbf{a).} \( \boxed{\textbf{Binomial Distribution}} \) Each race can be seen as a Bernoulli trial (win or not),
+with the same fixed probability of winning, and the outcomes across 8 independent races are counted.
+
+\vspace{2mm}
+
+\par\noindent\textbf{b).} \( \boxed{\textbf{Poisson Distribution}} \) False starts are relatively rare, occur independently,
+and can happen multiple times across races. When counting such events over a fixed period (the 12 races),
+the Poisson distribution provides the natural model.
+
+\vspace{2mm}
+
+\par\noindent\textbf{c).} \( \boxed{\textbf{Discrete Uniform Distribution}} \) Each gate is equally likely to be assigned,
+with no bias toward any specific number, so the assignment follows a discrete uniform distribution over the 8 possible gates.
 \end{solution}
 % ================================================================================ %
 
