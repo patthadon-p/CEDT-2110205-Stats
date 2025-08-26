@@ -22,37 +22,167 @@
 %                                    Problem 0x                                    %
 % ================================================================================ %
 \begin{problem}
-Here's problem statement.
-\begin{codingbox}
-print("You can insert code like this")
-\end{codingbox}
-You can insert sub-problem
+A fair 10-sided die is rolled. Let \( X \) be the random variable representing the outcome of the roll.
 \begin{subproblems}
-    \item Here's sub-problem a.
-    \item Here's sub-problem b.
-    \item Here's sub-problem c.
+    \item What is the expectation \( E[X] \)?
+    \item What is the variance \( Var(X) \)?
+    \item Let \( Y = 5X - 3 \). Calculate \( E[Y] \) and \( Var(Y) \).
 \end{subproblems}
 \end{problem}
 
 \begin{solution}
-The solution goes here.
+\par\noindent\textbf{a).} \, The expectation \( E[X] \) of a fair 10-sided die can be calculated
+using the formula for the expectation of a discrete random variable:
+\[
+    E(X) = \sum_{x \in \text{range}(X)} x P(X = x)
+\]
+while \( \text{range}(X) = \{1, 2, 3, \dots, 10\} \), and \( P(X = x) = \frac{1}{10} \).
+Thus,
+\begin{align*}
+    E(X) &= \sum_{x \in \text{range}(X)} x P(X = x) \\
+    &= \sum_{x \in \{1, 2, 3, \dots, 10\}} x \cdot \frac{1}{10} \\
+    &= \frac{1}{10} \sum_{x=1}^{10} x \\
+    &= \frac{1}{10} \cdot \frac{10(10 + 1)}{2} \\
+    &= \frac{11}{2} \\
+    E(X) &= \boxed{5.5}
+\end{align*}
+
+\vspace{2mm}
+
+\par\noindent\textbf{b).} \, The variance \( Var(X) \) of a fair 10-sided die can be calculated
+using the formula for the variance of a discrete random variable:
+\[
+    Var(X) = E\sqbracket{\paren{X - E[X]}^2} = E(X^2) - (E(X))^2
+\]
+while \( E(X) = 5.5 \), we need to calculate \( E(X^2) \):
+\begin{align*}
+    E(x^2) &= \sum_{x=1}^{10} x^2 P(X = x) \\
+    &= \frac{(10)(10 + 1)(2 \times 10 + 1)}{6} \times \frac{1}{10} \\
+    &= \frac{(10)(11)(21)}{6} \times \frac{1}{10} \\
+    &= 38.5
+\end{align*}
+So that, \( Var(X) = E(X^2) - (E(X))^2 = 38.5 - \paren(5.5)^2 = 38.5 - 30.25 = \boxed{8.25} \).
+
+\vspace{2mm}
+
+\par\noindent\textbf{c).} \, Becase,
+\[
+    E(aX + b) = aE(X) + b
+\]
+and,
+\[
+    Var(aX + b) = a^2 Var(X)
+\]
+while, \( Y = 5X - 3 \). Thus,
+\begin{align*}
+    E(Y) &= E(5X - 3) \\
+    &= 5E(X) - 3 \\
+    &= 5 \times 5.5 - 3 \\
+    &= 27.5 - 3 \\
+    &= 24.5
+\end{align*}
+and,
+\begin{align*}
+    Var(Y) &= Var(5X - 3) \\
+    &= 5^2 \cdot Var(X) \\
+    &= 25 \times 8.25 \\
+    &= 206.25
+\end{align*}
+
+Which means
+\[\boxed{
+    E(Y) = 24.5, \; Var(Y) = 206.25
+}\]
 \end{solution}
 % ================================================================================ %
 
 
 % ================================================================================ %
-%                                    Problem 0y                                    %
+%                                    Problem 03                                    %
 % ================================================================================ %
 \begin{tosubmit}
-\problem
-Here's the problem statement for \textbf{MANDATORY} problem.
+\problem[3]
+A manufacturer produces computer chips, and 5\% of them are defective.
+A sample of 20 chips is selected for testing.
+Let \( Y \) be the number of defective chips in the sample.
+\begin{subproblems}
+    \item What is the probability of finding exactly 2 defective chips?
+    \item What is the expected number of defective chips, \( E[Y] \)?
+    \item What is the variance of the number of defective chips, \( Var(Y) \)?
+\end{subproblems}
+
+\par\noindent\submitsolution According to the statement, \( Y \sim Binomial(20, 0.05) \)
+
+\vspace{2mm}
+
+\par\noindent\textbf{a).} \, The probability of finding exactly 2 defective chips
+can be calculated using the binomial probability formula:
+\[
+    P(Y = 2) = \binom{20}{2} (0.05)^{2} (0.95)^{18} \approx \boxed{0.3774}
+\]
+
+\vspace{2mm}
+
+\par\noindent\textbf{b).} \, The expected number of defective chips, \( E[Y] \),
+is the expected value of a binomial distribution, \( Y \sim Binomial(20, 0.05) \):
+\[
+    E(Y) = (20)(0.05) = \boxed{1}
+\]
+
+\vspace{2mm}
+
+\par\noindent\textbf{c).} \, The variance of  number of defective chips, \( Var[Y] \),
+is the variance of a binomial distribution, \( Y \sim Binomial(20, 0.05) \):
+\[
+    E(Y) = (20)(0.05)(1-0.05) = \boxed{0.95}
+\]
+\end{tosubmit}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 06                                    %
+% ================================================================================ %
+\begin{tosubmit}
+\problem[6]
+A number \( X \) is chosen at random from the set \( \{1, 2, 3, \cdot , 12\} \).
+A prize is awarded based on the formula \( P = 3X^2 - 5 \).
+\begin{subproblems}
+    \item Find the expected value of the prize, \( E[P] \).
+    \item Find the variance of \( X \).
+\end{subproblems}
+\( \paren{\text{Hint: } \sum_{i=1}^n i = \frac{n(n+1)}{2} \text{ and } \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}} \)
+
+\vspace{2mm}
 
 \par\noindent\submitsolution
-Here's the solution for the \textbf{MANDATORY} problem. \\
-ABC.
+\[
+    E[P] = E[3X^2 - 5] = 3E[X^2] - 5
+\]
 
-\proof
-Here's the proof for the \textbf{MANDATORY} problem.
+\vspace{2mm}
+
+\par\noindent While \( X \sim Uniform(12) \), the expectation of Uniform Distribution is:
+\[
+    E[X] = \frac{n+1}{2} = \frac{12+1}{2} = 6.5
+\]
+and the variance of Uniform Distribution is:
+\[
+    Var(X) = \frac{n^2 - 1}{12} = \frac{12^2 - 1}{12} = \boxed{\frac{143}{12}} \; \text{b).}
+\]
+We can calculate \( E[X^2] \) as follows:
+\begin{align*}    
+    Var(X) &= E[X^2] - \paren{E[x]}^2 \\
+    E[X^2] &= Var(X) + \paren{E[x]}^2 \\
+    &= \frac{143}{12} + (6.5)^2 \\
+    &= \frac{143}{12} + \frac{169}{4} \\
+    &= \frac{650}{12} \\
+    E[X^2] &= \frac{325}{6}
+\end{align*}
+, we know that:
+\[
+    E[P] = 3E[X^2] - 5 = 3 \times \frac{325}{6} - 5 = \frac{325}{2} - 5 = \frac{315}{2} = \boxed{157.5} \; \text{a).}
+\]
 \end{tosubmit}
 % ================================================================================ %
 
