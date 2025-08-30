@@ -13,65 +13,48 @@
 
 
 % ================================================================================ %
-\section{Week 4: Expectation and Variance of Discrete RVs}
+\section{Week 4: Expectation and \text{Var}iance of Discrete RVs}
 % ================================================================================ %
 
 
 
 % ================================================================================ %
-%                                    Problem 0x                                    %
+%                                    Problem 01                                    %
 % ================================================================================ %
 \begin{problem}
 A fair 10-sided die is rolled. Let \( X \) be the random variable representing the outcome of the roll.
 \begin{subproblems}
     \item What is the expectation \( E[X] \)?
-    \item What is the variance \( Var(X) \)?
-    \item Let \( Y = 5X - 3 \). Calculate \( E[Y] \) and \( Var(Y) \).
+    \item What is the variance \( \text{Var}(X) \)?
+    \item Let \( Y = 5X - 3 \). Calculate \( E[Y] \) and \( \text{Var}(Y) \).
 \end{subproblems}
 \end{problem}
 
 \begin{solution}
-\par\noindent\textbf{a).} \, The expectation \( E[X] \) of a fair 10-sided die can be calculated
-using the formula for the expectation of a discrete random variable:
+In this situation, we have a discrete uniform distribution--\( X \sim \text{Uniform}(10) \).
+For uniform distribution \( Z \sim \text{Uniform}(n) \):
 \[
-    E(X) = \sum_{x \in \text{range}(X)} x P(X = x)
+    E[Z] = \frac{n + 1}{2}, \quad \text{Var}(Z) = \frac{n^2 - 1}{12}
+\]
+Therefore,
+\[
+    E[X] = \frac{10 + 1}{2} = \frac{11}{2} = \boxed{5.5} \; \textbf{a).}
+\]
+and,
+\[
+    \text{Var}[X] = \frac{10^2 - 1}{12} = \frac{99}{12} = \frac{33}{4} = \boxed{8.25} \; \textbf{b).}
 \]
 while \( \text{range}(X) = \{1, 2, 3, \dots, 10\} \), and \( P(X = x) = \frac{1}{10} \).
-Thus,
-\begin{align*}
-    E(X) &= \sum_{x \in \text{range}(X)} x P(X = x) \\
-    &= \sum_{x \in \{1, 2, 3, \dots, 10\}} x \cdot \frac{1}{10} \\
-    &= \frac{1}{10} \sum_{x=1}^{10} x \\
-    &= \frac{1}{10} \cdot \frac{10(10 + 1)}{2} \\
-    &= \frac{11}{2} \\
-    E(X) &= \boxed{5.5}
-\end{align*}
 
 \vspace{2mm}
 
-\par\noindent\textbf{b).} \, The variance \( Var(X) \) of a fair 10-sided die can be calculated
-using the formula for the variance of a discrete random variable:
-\[
-    Var(X) = E\sqbracket{\paren{X - E[X]}^2} = E(X^2) - (E(X))^2
-\]
-while \( E(X) = 5.5 \), we need to calculate \( E(X^2) \):
-\begin{align*}
-    E(x^2) &= \sum_{x=1}^{10} x^2 P(X = x) \\
-    &= \frac{(10)(10 + 1)(2 \times 10 + 1)}{6} \times \frac{1}{10} \\
-    &= \frac{(10)(11)(21)}{6} \times \frac{1}{10} \\
-    &= 38.5
-\end{align*}
-So that, \( Var(X) = E(X^2) - (E(X))^2 = 38.5 - \paren(5.5)^2 = 38.5 - 30.25 = \boxed{8.25} \).
-
-\vspace{2mm}
-
-\par\noindent\textbf{c).} \, Becase,
+Because,
 \[
     E(aX + b) = aE(X) + b
 \]
 and,
 \[
-    Var(aX + b) = a^2 Var(X)
+    \text{Var}(aX + b) = a^2 \text{Var}(X)
 \]
 while, \( Y = 5X - 3 \). Thus,
 \begin{align*}
@@ -83,16 +66,54 @@ while, \( Y = 5X - 3 \). Thus,
 \end{align*}
 and,
 \begin{align*}
-    Var(Y) &= Var(5X - 3) \\
-    &= 5^2 \cdot Var(X) \\
+    \text{Var}(Y) &= \text{Var}(5X - 3) \\
+    &= 5^2 \cdot \text{Var}(X) \\
     &= 25 \times 8.25 \\
     &= 206.25
 \end{align*}
 
 Which means
 \[\boxed{
-    E(Y) = 24.5, \; Var(Y) = 206.25
-}\]
+    E(Y) = 24.5, \; \text{Var}(Y) = 206.25
+} \; \textbf{c).} \]
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 02                                    %
+% ================================================================================ %
+\begin{problem}
+A student takes a multiple-choice quiz. For a single question, the probability of answering correctly is 0.8.
+Let \( X = 1 \) if the answer is correct and \( X = 0 \) otherwise.
+\begin{subproblems}
+    \item Find the expectation \( E[X] \).
+    \item Find the variance \( \text{Var}(X) \).
+    \item Calculate \( E[X^2] \).
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+This distribution is a Bernoulli distribution--\( X \sim \text{Bernoulli}(0.8) \).
+The expected value and variance of \( Y \sim \text{Bernoulli}(p) \) are:
+\[
+    E[Y] = p, \quad \text{Var}(Y) = p(1 - p)
+\]
+Thus,
+\[
+    E[X] = \boxed{0.8} \; \textbf{a).}
+\]
+and,
+\[
+    \text{Var}(X) = 0.8(1 - 0.8) = 0.8 \cdot 0.2 = \boxed{0.16} \; \textbf{b).}
+\]
+Because, \( \text{Var}(X) = E[X^2] - E[X]^2 \), so that:
+\begin{align*}  
+    E[X^2] &= \text{Var}(X) + E[X]^2 \\
+    &= 0.16 + (0.8)^2 \\
+    &= 0.16 + 0.64 \\
+    &= \boxed{0.8} \; \textbf{c).}
+\end{align*}
 \end{solution}
 % ================================================================================ %
 
@@ -101,42 +122,119 @@ Which means
 %                                    Problem 03                                    %
 % ================================================================================ %
 \begin{tosubmit}
-\problem[3]
+\problem
 A manufacturer produces computer chips, and 5\% of them are defective.
 A sample of 20 chips is selected for testing.
 Let \( Y \) be the number of defective chips in the sample.
 \begin{subproblems}
     \item What is the probability of finding exactly 2 defective chips?
     \item What is the expected number of defective chips, \( E[Y] \)?
-    \item What is the variance of the number of defective chips, \( Var(Y) \)?
+    \item What is the variance of the number of defective chips, \( \text{Var}(Y) \)?
 \end{subproblems}
 
-\par\noindent\submitsolution According to the statement, \( Y \sim Binomial(20, 0.05) \)
+\par\noindent\submitsolution According to the statement, \( Y \sim \text{Binomial}(20, 0.05) \)
 
 \vspace{2mm}
 
 \par\noindent\textbf{a).} \, The probability of finding exactly 2 defective chips
 can be calculated using the binomial probability formula:
 \[
-    P(Y = 2) = \binom{20}{2} (0.05)^{2} (0.95)^{18} \approx \boxed{0.3774}
+    P(Y = 2) = \binom{20}{2} (0.05)^{2} (0.95)^{18} \approx \boxed{0.1887}
 \]
 
 \vspace{2mm}
 
 \par\noindent\textbf{b).} \, The expected number of defective chips, \( E[Y] \),
-is the expected value of a binomial distribution, \( Y \sim Binomial(20, 0.05) \):
+is the expected value of a binomial distribution, \( Y \sim \text{Binomial}(20, 0.05) \):
 \[
     E(Y) = (20)(0.05) = \boxed{1}
 \]
 
 \vspace{2mm}
 
-\par\noindent\textbf{c).} \, The variance of  number of defective chips, \( Var[Y] \),
-is the variance of a binomial distribution, \( Y \sim Binomial(20, 0.05) \):
+\par\noindent\textbf{c).} \, The variance of  number of defective chips, \( \text{Var}[Y] \),
+is the variance of a binomial distribution, \( Y \sim \text{Binomial}(20, 0.05) \):
 \[
     E(Y) = (20)(0.05)(1-0.05) = \boxed{0.95}
 \]
 \end{tosubmit}
+% ================================================================================ %
+
+\pagebreak
+
+% ================================================================================ %
+%                                    Problem 04                                    %
+% ================================================================================ %
+\begin{problem}
+The average number of calls arriving at a customer service center is 8 calls per hour.
+Let \( X \) be the number of calls in a given hour.
+\begin{subproblems}
+    \item Find the expectation \( E[X] \).
+    \item Find the variance \( \text{Var}(X) \).
+    \item Calculate \( E[X^2] \).
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+This distribution is a Poisson distribution--\( X \sim \text{Poisson}(8) \).
+The expected value and variance of \( Y \sim \text{Poisson}(\lambda) \) are:
+\[
+    E[Y] = \lambda, \quad \text{Var}(Y) = \lambda
+\]
+Thus,
+\[
+    E[X] = \boxed{8} \; \textbf{a).}
+\]
+and,
+\[
+    \text{Var}(X) = \boxed{8} \; \textbf{b).}
+\]
+From the relation, \( \text{Var}(X) = E[X^2] - E[X]^2 \), we can compute:
+\begin{align*}
+    E[X^2] &= \text{Var}(X) + E[X]^2 \\
+    &= 8 + (8)^2 \\
+    &= 8 + 64 \\
+    &= \boxed{72} \; \textbf{c).}
+\end{align*}
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 05                                    %
+% ================================================================================ %
+\begin{problem}
+Let X be a random variable with \( E[X] = \) 6 and \( \text{Var}(X) = \) 2.
+Let \( Y = -2X + 7 \).
+\begin{subproblems}
+    \item Find \( E[Y] \).
+    \item Find \( \text{Var}(Y) \).
+    \item Calculate \( E[X^2] \).
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+Because \( Y = -2X + 7 \):
+\begin{align*}
+    E[Y] &= -2E[X] + 7 \\
+    &= -2(6) + 7 \\
+    &= -12 + 7 \\
+    &= \boxed{-5} \; \textbf{a).}
+\end{align*}
+and,
+\begin{align*}
+    \text{Var}(Y) &= (-2)^2 \text{Var}(X) \\
+    &= 4(2) \\
+    &= \boxed{8} \; \textbf{b).}
+\end{align*}
+From the relation, \( \text{Var}(Y) = E[Y^2] - E[Y]^2 \), we can compute \( E[Y^2] \):
+\begin{align*}
+    E[Y^2] &= \text{Var}(Y) + E[Y]^2 \\
+    &= 8 + (-5)^2 \\
+    &= 8 + 25 \\
+    &= \boxed{33} \; \textbf{c).}
+\end{align*}
+\end{solution}
 % ================================================================================ %
 
 
@@ -145,7 +243,7 @@ is the variance of a binomial distribution, \( Y \sim Binomial(20, 0.05) \):
 % ================================================================================ %
 \begin{tosubmit}
 \problem[6]
-A number \( X \) is chosen at random from the set \( \{1, 2, 3, \cdot , 12\} \).
+A number \( X \) is chosen at random from the set \( \{1, 2, 3, \dots , 12\} \).
 A prize is awarded based on the formula \( P = 3X^2 - 5 \).
 \begin{subproblems}
     \item Find the expected value of the prize, \( E[P] \).
@@ -162,28 +260,246 @@ A prize is awarded based on the formula \( P = 3X^2 - 5 \).
 
 \vspace{2mm}
 
-\par\noindent While \( X \sim Uniform(12) \), the expectation of Uniform Distribution is:
+\par\noindent While \( X \sim \text{Uniform}(12) \), the expectation of Uniform Distribution is:
 \[
     E[X] = \frac{n+1}{2} = \frac{12+1}{2} = 6.5
 \]
 and the variance of Uniform Distribution is:
 \[
-    Var(X) = \frac{n^2 - 1}{12} = \frac{12^2 - 1}{12} = \boxed{\frac{143}{12}} \; \text{b).}
+    \text{Var}(X) = \frac{n^2 - 1}{12} = \frac{12^2 - 1}{12} = \boxed{\frac{143}{12}} \; \text{b).}
 \]
 We can calculate \( E[X^2] \) as follows:
 \begin{align*}    
-    Var(X) &= E[X^2] - \paren{E[x]}^2 \\
-    E[X^2] &= Var(X) + \paren{E[x]}^2 \\
+    \text{Var}(X) &= E[X^2] - \paren{E[x]}^2 \\
+    E[X^2] &= \text{Var}(X) + \paren{E[x]}^2 \\
     &= \frac{143}{12} + (6.5)^2 \\
     &= \frac{143}{12} + \frac{169}{4} \\
     &= \frac{650}{12} \\
     E[X^2] &= \frac{325}{6}
 \end{align*}
-, we know that:
-\[
-    E[P] = 3E[X^2] - 5 = 3 \times \frac{325}{6} - 5 = \frac{325}{2} - 5 = \frac{315}{2} = \boxed{157.5} \; \text{a).}
-\]
+we know that:
+\begin{align*}
+  E[P] &= 3E[X^2] - 5 \\
+  &= 3 \times \frac{325}{6} - 5 \\
+  &= \frac{325}{2} - 5 \\
+  &= \frac{315}{2} \\
+  &= \boxed{157.5} \; \text{a).}
+\end{align*}
 \end{tosubmit}
+% ================================================================================ %
+
+\pagebreak
+
+% ================================================================================ %
+%                                    Problem 07                                    %
+% ================================================================================ %
+\begin{problem}
+A scientist runs an experiment that succeeds with probability \( p = 0.4 \).
+The experiments are run until one is successful. The cost of each experiment is \$100.
+Let \( N \) be the number of experiments run.
+\begin{subproblems}
+    \item What is the expected total cost, \( E[100N] \)?
+    \item What is the variance of the total cost, \( \text{Var}(100N) \)?
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+The random variable \( N \) follows a geometric distribution with parameter \( p = 0.4 \).
+
+The expected value of a geometrically distributed random variable is given by:
+\[
+    E[N] = \frac{1}{p} = \frac{1}{0.4} = 2.5
+\]
+Thus, the expected total cost is:
+\[
+    E[100N] = 100E[N] = 100 \times 2.5 = \boxed{250} \; \textbf{a).}
+\]
+
+The variance of a geometrically distributed random variable is given by:
+\[
+    \text{Var}(N) = \frac{1-p}{p^2} = \frac{0.6}{(0.4)^2} = \frac{0.6}{0.16} = 3.75
+\]
+Thus, the variance of the total cost is:
+\[
+    \text{Var}(100N) = 100^2 \text{Var}(N) = 10000 \times 3.75 = \boxed{37500} \; \textbf{b).}
+\]
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 08                                    %
+% ================================================================================ %
+\begin{problem}
+A factory has two machines. Machine 1 produces items with defects at a Poisson rate of 0.8 defects per item.
+Machine 2 produces items with defects at a Poisson rate of 1.2 defects per item.
+Machine 1 produces 60\% of the factory's output, and Machine 2 produces 40\%.
+An item is selected at random and found to have exactly 1 defect.
+\begin{subproblems}
+    \item What is the probability that this item was produced by Machine 1?
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+Let \( D_1 \sim Poisson(0.8) \) be the event that the item was produced by Machine 1,
+and \( D_2 \sim Poisson(1.2) \) be the event that it was produced by Machine 2.
+
+\vspace{2mm}
+
+\par\noindent We want to find \( P(D_1 | 1 \text{ defect}) \).
+
+Using Bayes' theorem:
+\[
+P(D_1 | 1 \text{ defect}) = \frac{P(1 \text{ defect} | D_1) P(D_1)}{P(1 \text{ defect})}
+\]
+
+We know:
+\begin{align*}
+    P(D_1) &= 0.6 \\
+    P(D_2) &= 0.4
+\end{align*}
+
+Next, we need to find \( P(1 \text{ defect} | D_1) \) and \( P(1 \text{ defect} | D_2) \).
+
+For Machine 1:
+\[
+P(1 \text{ defect} | D_1) = \frac{(0.8)^1 e^{-0.8}}{1!} = 0.8 e^{-0.8}
+\]
+
+For Machine 2:
+\[
+P(1 \text{ defect} | D_2) = \frac{(1.2)^1 e^{-1.2}}{1!} = 1.2 e^{-1.2}
+\]
+
+Now we can find \( P(1 \text{ defect}) \):
+\begin{align*}
+    P(1 \text{ defect}) &= P(1 \text{ defect} | D_1) P(D_1) + P(1 \text{ defect} | D_2) P(D_2) \\
+    &= (0.8 e^{-0.8})(0.6) + (1.2 e^{-1.2})(0.4)
+\end{align*}
+
+Substituting these values back into Bayes' theorem:
+\[
+P(D_1 | 1 \text{ defect}) = \frac{(0.8 e^{-0.8})(0.6)}{(0.8 e^{-0.8})(0.6) + (1.2 e^{-1.2})(0.4)}
+\]
+
+This simplifies to:
+\[
+P(D_1 | 1 \text{ defect}) = \frac{0.48 e^{-0.8}}{0.48 e^{-0.8} + 0.48 e^{-1.2}} = \frac{e^{-0.8}}{e^{-0.8} + e^{-1.2}}
+\approx \boxed{0.599} \; \textbf{a).}
+\]
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 09                                    %
+% ================================================================================ %
+\begin{problem}
+There are two bags of marbles. Bag A contains 3 red and 7 blue marbles.
+Bag B contains 6 red and 4 blue marbles. You choose a bag at random and draw one marble. The marble is red.
+\begin{subproblems}
+    \item What is the probability that the marble came from Bag A?
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+Let \( A \) be the event that the marble was drawn from Bag A,
+and \( B \) be the event that the marble was drawn from Bag B.
+
+\vspace{2mm}
+
+We want to find \( P(A | \text{red}) \).
+
+Using Bayes' theorem:
+\[
+P(A | \text{red}) = \frac{P(\text{red} | A) P(A)}{P(\text{red})}
+\]
+
+We know:
+\begin{align*}
+    P(A) &= 0.5 \\
+    P(B) &= 0.5
+\end{align*}
+
+Next, we need to find \( P(\text{red} | A) \) and \( P(\text{red} | B) \).
+
+For Bag A:
+\[
+P(\text{red} | A) = \frac{3}{10}
+\]
+
+For Bag B:
+\[
+P(\text{red} | B) = \frac{6}{10}
+\]
+
+Now we can find \( P(\text{red}) \):
+\begin{align*}
+    P(\text{red}) &= P(\text{red} | A) P(A) + P(\text{red} | B) P(B) \\
+    &= \left(\frac{3}{10}\right)\left(0.5\right) + \left(\frac{6}{10}\right)\left(0.5\right) \\
+    &= \frac{3}{20} + \frac{6}{20} = \frac{9}{20}
+\end{align*}
+
+Substituting these values back into Bayes' theorem:
+\[
+P(A | \text{red}) = \frac{\left(\frac{3}{10}\right)\left(0.5\right)}{\frac{9}{20}} = \frac{\frac{3}{20}}{\frac{9}{20}} = \frac{3}{9} = \frac{1}{3}
+\]
+
+Thus, the probability that the marble came from Bag A is \( \boxed{\frac{1}{3}} \).
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 10                                    %
+% ================================================================================ %
+\begin{problem}
+You roll a fair six-sided die. Let the outcome be \( K \).
+You then flip a biased coin \( K \) times. The coin has a probability of heads of 0.7.
+Let \( H \) be the number of heads obtained.
+\begin{subproblems}
+    \item Find the expected number of heads, \( E[H] \).
+    \item Find the variance of the number of heads, \( \text{Var}(H) \).
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+We can use the information given by the statement to conclude that:
+\[
+    K \sim \text{Uniform}(6), \; H | K \sim \text{Binomial}(K, 0.7)
+\]
+\par\noindent\textbf{a).} From the law of total expectation:
+\[
+    E[H] = E[E[H | K]]
+\]
+Thus,
+\begin{align*}
+    E[H] &= E[E[H | K]] \\
+    &= E[K \times 0.7] \\
+    &= 0.7 \times E[K] \\
+    &= 0.7 \times \frac{6 + 1}{2} \\
+    &= 0.7 \times \frac{7}{2} \\
+    &= 0.7 \times 3.5 \\
+    &= \boxed{2.45}
+\end{align*}
+
+\par\noindent\textbf{b).} From the law of total variance:
+\[
+    \text{Var}(H) = E[\text{Var}(H | K)] + \text{Var}(E[H | K])
+\]
+Thus,
+\begin{align*}
+    \text{Var}(H) &= E[\text{Var}(H | K)] + \text{Var}(E[H | K]) \\
+    &= E[K \times 0.7 \times (1 - 0.7)] + \text{Var}(K \times 0.7) \\
+    &= E[K \times 0.21] + \paren{(0.7)^2 \times \text{Var}(K)} \\
+    &= \paren{0.21 \times E[K]} + \paren{0.49 \times \text{Var}(K)} \\
+    &= \paren{0.21 \times \frac{6 + 1}{2}} + \paren{0.49 \times \frac{6^2 - 1}{12}} \\
+    &= \paren{0.21 \times \frac{7}{2}} + \paren{0.49 \times \frac{35}{12}} \\
+    &= 0.735 + \paren{0.49 \times 2.9167} \\
+    &= 0.735 + 1.429 \\
+    &= \boxed{2.164}
+\end{align*}
+\end{solution}
 % ================================================================================ %
 
 
