@@ -316,18 +316,18 @@ To win the `Daily Double' bet, the gambler must correctly pick the winners of bo
 
 Thus, the probability of winning the `Daily Double' bet is:
 \[
-    P(Z = 1) = P(\text{win first}) \times P(\text{win second}) = \frac{1}{8} \times \frac{1}{10} = \frac{1}{80} = 0.0125.
+    P(Z = 1) = P(\text{win first}) \times P(\text{win second}) = \frac{1}{8} \times \frac{1}{10} = \frac{1}{80} = \boxed{0.0125}.
 \]
 
 So that, \( P(Z = 0) = 1 - P(Z = 1) = 1 - 0.0125 = 0.9875 \).
-\[\boxed{
+\[
     P(Z = z) =
     \begin{cases}
     0.0125, & z=1\\
     0.9875, & z=0\\
     0, & \text{otherwise.}
     \end{cases}
-}\]
+\]
 
 \end{solution}
 % ================================================================================ %
@@ -508,10 +508,10 @@ In this case, \( k = 7 \) (the number scheduled races), and \( p = 0.15 \) (the 
     &= 1 - \paren{ \binom{7}{0} (0.15)^0 (0.85)^7 + \binom{7}{1} (0.15)^1 (0.85)^6 } \\
     &= 1 - \paren{ 1 \cdot 1 \cdot (0.85)^7 + 7 \cdot 0.15 \cdot (0.85)^6 } \\
     &= 1 - \paren{ (0.85)^7 + 1.05 \cdot (0.85)^6 } \\
-    &\approx 1 - \paren{ 0.3235 + 1.05 \cdot 0.3807 } \\
-    &\approx 1 - (0.3235 + 0.3997) \\
-    &\approx 1 - 0.7232 \\
-    &\approx \boxed{0.2768}
+    &\approx 1 - \paren{ 0.3206 + 1.05 \cdot 0.3771 } \\
+    &\approx 1 - (0.3206 + 0.3960) \\
+    &\approx 1 - 0.7166 \\
+    &\approx \boxed{0.2834}
 \end{align*}
 \end{solution}
 % ================================================================================ %
