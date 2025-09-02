@@ -169,33 +169,36 @@ is the variance of a binomial distribution, \( Y \sim \text{Binomial}(20, 0.05) 
 The average number of calls arriving at a customer service center is 8 calls per hour.
 Let \( X \) be the number of calls in a given hour.
 \begin{subproblems}
-    \item Find the expectation \( E[X] \).
-    \item Find the variance \( \text{Var}(X) \).
-    \item Calculate \( E[X^2] \).
+    \item What is the probability that exactly 5 calls are received in one hour?
+    \item What is the expectation \( E[X] \) and variance \( \text{Var}(X) \).
+    \item If the call center is open for 8 hours, what is the expected total number of calls?
 \end{subproblems}
 \end{problem}
 
 \begin{solution}
 This distribution is a Poisson distribution--\( X \sim \text{Poisson}(8) \).
+The probability mass function of a Poisson distribution is given by:
+\[
+    P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
+\]
+for this problem, \( \lambda = 8 \) and \( k = 5 \):
+\[
+    P(X = 5) = \frac{8^5 e^{-8}}{5!} \approx \boxed{0.0916} \; \textbf{a).}
+\]
+
 The expected value and variance of \( Y \sim \text{Poisson}(\lambda) \) are:
 \[
     E[Y] = \lambda, \quad \text{Var}(Y) = \lambda
 \]
 Thus,
 \[
-    E[X] = \boxed{8} \; \textbf{a).}
+    \boxed{E[X] = \text{Var}(X) = 8} \; \textbf{b).}
 \]
-and,
+
+The expected value of the total number of calls in one hour is \( E[X] = 8 \), so that
 \[
-    \text{Var}(X) = \boxed{8} \; \textbf{b).}
+    \text{Total number of calls in 8 hours} = 8 \text{hour} \times \frac{8 \text{call}}{1 \text{hour}} = \boxed{64 \, \text{calls}} \; \textbf{c).}
 \]
-From the relation, \( \text{Var}(X) = E[X^2] - E[X]^2 \), we can compute:
-\begin{align*}
-    E[X^2] &= \text{Var}(X) + E[X]^2 \\
-    &= 8 + (8)^2 \\
-    &= 8 + 64 \\
-    &= \boxed{72} \; \textbf{c).}
-\end{align*}
 \end{solution}
 % ================================================================================ %
 
@@ -227,12 +230,12 @@ and,
     &= 4(2) \\
     &= \boxed{8} \; \textbf{b).}
 \end{align*}
-From the relation, \( \text{Var}(Y) = E[Y^2] - E[Y]^2 \), we can compute \( E[Y^2] \):
+From the relation, \( \text{Var}(X) = E[X^2] - E[X]^2 \), we can compute \( E[X^2] \):
 \begin{align*}
-    E[Y^2] &= \text{Var}(Y) + E[Y]^2 \\
-    &= 8 + (-5)^2 \\
-    &= 8 + 25 \\
-    &= \boxed{33} \; \textbf{c).}
+    E[X^2] &= \text{Var}(X) + E[X]^2 \\
+    &= 2 + 6^2 \\
+    &= 2 + 36 \\
+    &= \boxed{38} \; \textbf{c).}
 \end{align*}
 \end{solution}
 % ================================================================================ %
