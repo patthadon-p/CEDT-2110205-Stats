@@ -47,7 +47,8 @@
 \fancyhf{}
 \fancyhead[C]{}
 \fancyhead[R]{\thepage}
-\fancyfoot[C]{}
+
+\renewcommand{\footrulewidth}{0.4pt}
 
 \newcommand{\subject}[1][2110205 - Statistics for Computer Engineering]{
   \fancyhead[L]{\textbf{#1}}
@@ -55,17 +56,28 @@
 
 
 % =========================== Title command ===========================
-\newcommand{\hwtitle}[4]{
+\newcommand{\hwtitle}[5]{
   \begin{center}
-    {\LARGE \bfseries Homework #1} \\[6pt]
-    {\large #2} \\[2pt] % Course name
-    {\small \text{#3}} \\ % Your name or instructor
-    \ifx&#4&%
-      % nothing if optional argument is empty
+    \ifx&#2&
+      {\LARGE \bfseries Homework #1} \\[6pt]
     \else
-      {\small \textit{Collaborators.} #4}%
+      {\LARGE \bfseries #2} \\[6pt]
+    \fi
+    {\large #3} \\[2pt]
+    {\small \text{#4}} \\
+    \ifx&#5&
+      %
+    \else
+      {\small \textit{Collaborators.} #5}%
     \fi
   \end{center}
+
+  \ifx&#2&
+    \fancyfoot[C]{\textbf{Homework #1}}
+  \else
+    \fancyfoot[C]{\textbf{#2}}
+  \fi
+
   \vspace{12pt}
   \hrule
   \vspace{12pt}
