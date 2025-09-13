@@ -6,10 +6,33 @@
 
 \setlength{\headheight}{14.49998pt}
 
+
+\newcommand{\zScoreTable}[1]{
+    \par\noindent \textbf{z-table}
+    \begin{table}[h]
+        \centering
+        \renewcommand{\arraystretch}{#1}
+        \begin{tabular}{|c|cccccccccc|}
+            \hline
+            \textbf{z} & 0.0 & +0.1 & +0.2 & +0.3 & +0.4 & +0.5 & +0.6 & +0.7 & +0.8 & +0.9 \\
+            \hline
+            0.0 & 0.5000 & 0.5398 & 0.5793 & 0.6179 & 0.6554 & 0.6915 & 0.7258 & 0.7580 & 0.7881 & 0.8159 \\
+            1.0 & 0.8413 & 0.8643 & 0.8849 & 0.9032 & 0.9192 & 0.9332 & 0.9452 & 0.9554 & 0.9641 & 0.9713 \\
+            2.0 & 0.9773 & 0.9821 & 0.9861 & 0.9893 & 0.9918 & 0.9938 & 0.9953 & 0.9965 & 0.9974 & 0.9981 \\
+            3.0 & 0.9987 & & & & & & & & & \\
+            \hline
+        \end{tabular}
+        \caption{Standard Normal Distribution Table (z-table)}
+        \label{tab:z-table}
+    \end{table}
+}
+
+
 \begin{document}
 \subject[2110205 - Statistics for Computer Engineering]
 \hwtitle{5}{}{Week 6}{6733172621 Patthadon Phengpinij}{ChatGPT (for\,\LaTeX\,styling and grammar checking)}
 
+\zScoreTable{1.2}
 
 % ================================================================================ %
 \section{Week 6: Continuous Random Variables}
@@ -40,7 +63,7 @@ For each statement below, determine if it is True or False.
 \end{solution}
 % ================================================================================ %
 
-
+\newpage
 
 % ================================================================================ %
 %                                    Problem 02                                    %
@@ -110,6 +133,7 @@ f(x) = \begin{cases}
 \end{solution}
 % ================================================================================ %
 
+\newpage
 
 % ================================================================================ %
 %                                    Problem 03                                    %
@@ -164,12 +188,10 @@ Considering the piecewise nature of the PDF, we have:
 \end{align*}
 Calculating the integrals:
 \begin{align*}
-    \int_{0}^{x} \frac{1}{4}t\,dt &= \frac{1}{4} \cdot \int_{0}^{x} t\,dt \\
-    &= \frac{1}{4} \cdot \sqbracket{\frac{t^2}{2}}_{0}^{x} \\
+    \int_{0}^{x} \frac{1}{4}t\,dt &= \frac{1}{4} \cdot \sqbracket{\frac{t^2}{2}}_{0}^{x} \\
     &= \frac{1}{4} \cdot \frac{x^2}{2} \\
     \int_{0}^{x} \frac{1}{4}t\,dt &= \frac{x^2}{8} \\
 \end{align*}
-
 And:
 \begin{align*}
     \int_{2}^{x} \frac{1}{4}(4 - t)\,dt &= \frac{1}{4} \cdot \sqbracket{4t - \frac{t^2}{2}}_{2}^{x} \\
@@ -187,7 +209,6 @@ F(x) = \begin{cases}
     1 & x \geq 4
 \end{cases}
 \]
-Therefore, the CDF is:
 \[
 \boxed{F(x) = \begin{cases}
     0 & x < 0 \\
@@ -352,6 +373,147 @@ Solving for \( t \):
 \[ t = 0.8 \times 15 = 12 \]
 Thus, the 80th percentile of the waiting time is \( \boxed{12 \text{ minutes}} \).
 \end{tosubmit}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 08                                    %
+% ================================================================================ %
+\begin{problem}
+The lifespan of a particular brand of hard drive, in years, follows an exponential
+distribution with a mean of 4 years.
+\begin{subproblems}
+    \item What is the value of the parameter \( \lambda \) for this distribution?
+    \item What is the probability that a new hard drive lasts for less than 1 year?
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+For an exponential distribution, the mean \( \mu \) is given by:
+\[ \mu = \frac{1}{\lambda} \]
+Given that the mean lifespan of the hard drive is 4 years, we can find \( \lambda \):
+\[ 4 = \frac{1}{\lambda} \implies \lambda = \boxed{\frac{1}{4}} \; \textbf{a).} \]
+
+The PDF of an exponential distribution is given by:
+\[ f(x) = \lambda e^{-\lambda x} \text{ for } x \geq 0 \]
+To find the probability that a new hard drive lasts for less than 1 year, we calculate:
+\[ P(X < 1) = \int_{0}^{1} f(x)\,dx = \int_{0}^{1} \frac{1}{4} e^{-\frac{1}{4} x}\,dx = \sqbracket{-e^{-\frac{1}{4} x}}_{0}^{1} = -e^{-\frac{1}{4}} + e^{0} = 1 - e^{-\frac{1}{4}} \approx 0.2212 \]
+Thus, the probability that a new hard drive lasts for less than 1 year is \( \boxed{1 - e^{-\frac{1}{4}}} \; \textbf{b).} \)
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 09                                    %
+% ================================================================================ %
+\begin{tosubmit}
+\problem
+For the hard drive in Problem 8, you discover an old one that is still working after 3 years.
+What is the probability that it will continue to work for at least another 4 years?
+
+\par\noindent\submitsolution
+From Problem 8, we know that the lifespan of the hard drive follows an exponential distribution with parameter \( \lambda = \frac{1}{4} \).
+
+\vspace{2mm}
+
+The exponential distribution has the memoryless property, which means that the probability of surviving an additional time period is independent of how long it has already survived.
+
+\vspace{2mm}
+
+Thus, we need to find \( P(X > 7 \mid X > 3) \), which is equivalent to \( P(X > 4) \) due to the memoryless property.
+\[ P(X > 4) = e^{-\lambda \cdot 4} = e^{-\frac{1}{4} \cdot 4} = e^{-1} \approx 0.3679 \]
+Thus, the probability that the hard drive will continue to work for at least another 4 years is \( \boxed{e^{-1}} \).
+\end{tosubmit}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 10                                    %
+% ================================================================================ %
+\begin{problem}
+What is the \textbf{median} lifespan of the hard drives from Problem 8?
+Is this value smaller or larger than the mean lifespan, and why does this make intuitive sense for this distribution?
+\end{problem}
+
+\begin{solution}
+From Problem 8, we know that the lifespan of the hard drive follows an exponential distribution with parameter \( \lambda = \frac{1}{4} \).
+
+\vspace{2mm}
+
+The CDF of an exponential distribution is given by:
+\[ F(x) = 1 - e^{-\lambda x} \text{ for } x \geq 0 \]
+
+To find the median lifespan, we need to solve for \( m \) in the equation \( F(m) = 0.5 \):
+\begin{align*}
+    0.5 &= 1 - e^{-\frac{1}{4} m} \\
+    e^{-\frac{1}{4} m} &= 0.5 \\
+    -\frac{1}{4} m &= \ln(0.5) \\
+    m &= -4 \ln(0.5) \\
+    m &= 4 \ln(2)
+\end{align*}
+Thus, the median lifespan of the hard drives is \( \boxed{4 \ln(2) \approx 2.7726 \text{ years}} \).
+\end{solution}
+% ================================================================================ %
+
+\newpage
+
+% ================================================================================ %
+%                                    Problem 11                                    %
+% ================================================================================ %
+\begin{tosubmit}
+\problem
+The final exam scores for a large statistics class are normally distributed with a
+mean of 72 and a standard deviation of 12.
+\begin{subproblems}
+    \item What is the probability that a randomly selected student scores between 65 and 85?
+    \item What is the probability a student scores exactly 80.00?
+\end{subproblems}
+
+\par\noindent\submitsolution
+From the z-table provided, we can use the standard normal distribution to find the required probabilities.
+\begin{center}
+    \includegraphics[width=0.80\textwidth]{Images/z-score.png}
+\end{center}
+
+Let \( X \) be the random variable representing the exam scores, where \( X \sim N(72, 12^2) \).
+
+\vspace{2mm}
+
+\textbf{a).} To find the probability that a randomly selected student scores between 65 and 85, we need to calculate \( P(65 < X < 85) \).
+We first convert the scores to z-scores:
+\[ z_1 = \frac{65 - 72}{12} = -\frac{7}{12} \approx -0.5833 \]
+\[ z_2 = \frac{85 - 72}{12} = \frac{13}{12} \approx 1.0833 \]
+Using the z-table, we find the probabilities corresponding to these z-scores:
+\[ P(Z < -0.58) \approx 0.2810 \]
+\[ P(Z < 1.08) \approx 0.8599 \]
+Thus, the probability that a student scores between 65 and 85 is:
+\[ P(65 < X < 85) = P(Z < 1.08) - P(Z < -0.58) \approx 0.8599 - 0.2810 = 0.5789 \]
+So, \( P(65 < X < 85) \approx \boxed{0.5789} \; \textbf{a).} \)
+\end{tosubmit}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 12                                    %
+% ================================================================================ %
+\begin{problem}
+For the exam scores in Problem 11, the professor wants to give an `A' grade to the top 10\% of students.
+What is the minimum score a student must get to receive an
+`A'?
+\end{problem}
+
+\begin{solution}
+From Problem 11, we know that the exam scores follow a normal distribution: \[ X \sim N(72, 12^2) \]
+
+To find the minimum score a student must get to receive an `A',
+we need to find the score corresponding to the 90th percentile of the distribution.
+We first find the z-score that corresponds to the 90th percentile using the z-table: \[ z \approx 1.28 \]
+
+We then convert this z-score back to the original score using the formula:
+\[ X = \mu + z \cdot \sigma = 72 + 1.28 \cdot 12 \approx 72 + 15.36 = 87.36 \]
+
+Thus, the minimum score a student must get to receive an `A' is approximately \( \boxed{87.36} \).
+\end{solution}
 % ================================================================================ %
 
 
