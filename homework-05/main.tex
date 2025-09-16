@@ -472,7 +472,7 @@ mean of 72 and a standard deviation of 12.
 \par\noindent\submitsolution
 From the z-table provided, we can use the standard normal distribution to find the required probabilities.
 \begin{center}
-    \includegraphics[width=0.80\textwidth]{Images/z-score.png}
+    \includegraphics[width=0.70\textwidth]{Images/z-score.png}
 \end{center}
 
 Let \( X \) be the random variable representing the exam scores, where \( X \sim N(72, 12^2) \).
@@ -489,6 +489,11 @@ Using the z-table, we find the probabilities corresponding to these z-scores:
 Thus, the probability that a student scores between 65 and 85 is:
 \[ P(65 < X < 85) = P(Z < 1.08) - P(Z < -0.58) \approx 0.8599 - 0.2810 = 0.5789 \]
 So, \( P(65 < X < 85) \approx \boxed{0.5789} \; \textbf{a).} \)
+
+\vspace{2mm}
+
+\textbf{b).} For a continuous random variable, the probability of scoring exactly any specific value is 0.
+Thus, \( P(X = 80.00) = \boxed{0} \;\textbf{b).} \)
 \end{tosubmit}
 % ================================================================================ %
 
@@ -498,8 +503,7 @@ So, \( P(65 < X < 85) \approx \boxed{0.5789} \; \textbf{a).} \)
 % ================================================================================ %
 \begin{problem}
 For the exam scores in Problem 11, the professor wants to give an `A' grade to the top 10\% of students.
-What is the minimum score a student must get to receive an
-`A'?
+What is the minimum score a student must get to receive an `A'?
 \end{problem}
 
 \begin{solution}
@@ -513,6 +517,247 @@ We then convert this z-score back to the original score using the formula:
 \[ X = \mu + z \cdot \sigma = 72 + 1.28 \cdot 12 \approx 72 + 15.36 = 87.36 \]
 
 Thus, the minimum score a student must get to receive an `A' is approximately \( \boxed{87.36} \).
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 13                                    %
+% ================================================================================ %
+\begin{problem}
+Given \( Z \) is a standard normal random variable, use a Z-table to find:
+\begin{subproblems}
+    \item \( P(Z < -1.4) \)
+    \item \( P(-0.5 < Z < 1.9) \)
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+\textbf{a).} From the z-table, we find:
+\[ P(Z < -1.4) \approx \boxed{0.0808} \]
+
+\textbf{b).} To find \( P(-0.5 < Z < 1.9) \), we can use the z-table to find the probabilities:
+\[ P(Z < -0.5) \approx 0.3085 \text{ and } P(Z < 1.9) \approx 0.9713 \]
+Thus, the probability is:
+\[ P(-0.5 < Z < 1.9) = P(Z < 1.9) - P(Z < -0.5) \approx 0.9713 - 0.3085 = \boxed{0.6628} \]
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 14                                    %
+% ================================================================================ %
+\begin{problem}
+Find the value of \( c \) for a standard normal variable \( Z \) such that:
+\begin{subproblems}
+    \item \( P(Z < c) = 0.99 \)
+    \item \( P(Z > c) = 0.75 \)
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+\textbf{a).} From the z-table, we find:
+\[ P(Z < c) = 0.99 \Rightarrow c \approx \boxed{2.3} \]
+
+\textbf{b).} To find \( P(Z > c) = 0.75 \), we can use the z-table to find the corresponding z-score:
+\[ P(Z < c) = 1 - P(Z > c) = 1 - 0.75 = 0.25 \Rightarrow c \approx \boxed{-0.7} \]
+\end{solution}
+% ================================================================================ %
+
+\newpage
+
+% ================================================================================ %
+%                                    Problem 15                                    %
+% ================================================================================ %
+\begin{problem}
+The weight of coffee in a ``large'' cup from a machine is \( X \sim N(400, 100) \) (in ml).
+The weight of milk added is \( Y \sim N(50, 25) \). Assume \( X \) and \( Y \) are independent.
+\begin{subproblems}
+    \item Let \( T = X + Y \) be the total volume. What are \( \text{E}[T] \) and \( \text{Var}(T) \)?
+    \item  What is the probability the total volume exceeds 460 ml?
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+\textbf{a).} For independent random variables \( X \) and \( Y \):
+\[ \text{E}[T] = \text{E}[X] + \text{E}[Y] = 400 + 50 = \boxed{450 \text{ ml}} \]
+\[ \text{Var}(T) = \text{Var}(X) + \text{Var}(Y) = 100 + 25 = \boxed{125 \text{ ml}^2} \]
+
+\textbf{b).} To find the probability that the total volume exceeds 460 ml, we first find the distribution of \( T \):
+\[ T \sim N(450, 125) \]
+We need to calculate \( P(T > 460) \). We first convert this to a z-score:
+\[ z = \frac{460 - 450}{\sqrt{125}} = \frac{10}{\sqrt{125}} \approx 0.9 \]
+Using the z-table, we find:
+\[ P(Z < 0.9) \approx 0.8159 \]
+Thus, the probability that the total volume exceeds 460 ml is:
+\[ P(T > 460) = 1 - P(Z < 0.9) \approx 1 - 0.8159 = \boxed{0.1841} \]
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 16                                    %
+% ================================================================================ %
+\begin{problem}
+\end{problem}
+
+\begin{solution}
+Let \( D = B - C \). Since \( B \) and \( C \) are independent normal random variables, \( D \) is also normally distributed:
+\[ D \sim N(\text{E}[B] - \text{E}[C], \text{Var}(B) + \text{Var}(C)) \]
+Calculating the mean and variance of \( D \):
+\[ \text{E}[D] = 120 - 125 = -5 \]
+\[ \text{Var}(D) = 16 + 9 = 25 \]
+Thus, \( D \sim N(-5, 25) \).
+
+We need to find \( P(D > 0) \), which is equivalent to finding \( P(B > C) \).
+We first convert this to a z-score:
+\[ z = \frac{0 - (-5)}{\sqrt{25}} = \frac{5}{5} = 1 \]
+Using the z-table, we find:
+\[ P(Z < 1) \approx 0.8413 \]
+Thus, the probability that the blueberry muffin is heavier than the chocolate chip muffin is:
+\[ P(D > 0) = 1 - P(Z < 1) \approx 1 - 0.8413 = \boxed{0.1587} \]
+\end{solution}
+% ================================================================================ %
+
+\newpage
+
+% ================================================================================ %
+%                                    Problem 16                                    %
+% ================================================================================ %
+\begin{problem}
+Let \( X \) be a random variable representing the outcome of a fair six-sided die roll.
+Let \( Y \) be a continuous random variable from a \( U(1, 6) \) distribution.
+\begin{subproblems}
+    \item Explain the fundamental difference between \( P(X = 4) \) and \( P(Y = 4) \).
+    \item Calculate \( P(X > 4) \) and \( P(Y > 4) \).
+\end{subproblems}
+\end{problem}
+
+\begin{solution}
+\textbf{a).} The fundamental difference between \( P(X = 4) \) and \( P(Y = 4) \) lies in the nature of the random variables.
+
+\vspace{2mm}
+
+\( X \) is a discrete random variable, meaning it can take on specific, countable values (in this case, the integers 1 through 6).
+Therefore, \( P(X = 4) \) represents the probability of rolling a 4 on a fair six-sided die, which is a non-zero value:
+\[ P(X = 4) = \frac{1}{6} \]
+
+\vspace{2mm}
+
+On the other hand, \( Y \) is a continuous random variable, meaning it can take on any value within a given range (in this case, between 1 and 6).
+For continuous random variables, the probability of taking on any specific value is zero. Therefore,
+\[ P(Y = 4) = 0 \]
+
+\textbf{b).} To calculate \( P(X > 4) \) for the discrete random variable \( X \):
+\[ P(X > 4) = P(X = 5) + P(X = 6) = \frac{1}{6} + \frac{1}{6} = \frac{2}{6} = \frac{1}{3} \]
+To calculate \( P(Y > 4) \) for the continuous random variable \( Y \):
+The PDF of a uniform distribution \( U(a, b) \) is given by:
+\[ f_Y(y) = \begin{cases}
+    \frac{1}{b-a} & a \leq y \leq b \\
+    0 & \text{otherwise}
+\end{cases} \]
+For our case, \( a = 1 \) and \( b = 6 \), so the PDF is:
+\[ f_Y(y) = \begin{cases}
+    \frac{1}{5} & 1 \leq y \leq 6 \\
+    0 & \text{otherwise}
+\end{cases} \]
+To find \( P(Y > 4) \), we can integrate the PDF from 4 to 6:
+\[ P(Y > 4) = \int_{4}^{6} f_Y(y) \, dy = \int_{4}^{6} \frac{1}{5} \, dy = \frac{1}{5} \cdot (6 - 4) = \frac{2}{5} \]
+Thus, \( P(X > 4) = \frac{1}{3} \) and \( P(Y > 4) = \frac{2}{5} \).
+\[\boxed{P(X > 4) = \frac{1}{3}, \; P(Y > 4) = \frac{2}{5}}\]
+\end{solution}
+% ================================================================================ %
+
+\newpage
+
+% ================================================================================ %
+%                                    Problem 18                                    %
+% ================================================================================ %
+\begin{problem}
+Suppose \( X \sim U(0, 1) \). Let a new random variable be defined as \( Y = -\ln(X) \).
+Find the PDF of \( Y \), \( f_Y(y) \). What famous distribution is this?
+\end{problem}
+
+\begin{solution}
+To find the PDF of \( Y \), we can use the method of transformation. The CDF of \( Y \) is given by:
+\[
+F_Y(y) = P(Y \leq y) = P(-\ln(X) \leq y) = P(X \geq e^{-y}) = 1 - P(X < e^{-y}) = 1 - e^{-y}
+\]
+for \( y \geq 0 \).
+
+Differentiating the CDF gives us the PDF:
+\[
+\boxed{f_Y(y) = \frac{d}{dy} F_Y(y) = e^{-y}} \; \text{for } y \geq 0
+\]
+
+This is the PDF of the exponential distribution with parameter \( \lambda = 1 \). Thus, \( Y \) follows an exponential distribution:
+\[
+\boxed{Y \sim \text{Exponential}(1)}
+\]
+\end{solution}
+% ================================================================================ %
+
+
+% ================================================================================ %
+%                                    Problem 19                                    %
+% ================================================================================ %
+\begin{problem}
+A factory produces widgets, and 5\% are defective. You take a random sample of 500 widgets.
+Use the normal approximation to the binomial distribution to estimate the probability that you will find 30 or more defective widgets in your sample.
+(Remember to use the continuity correction).
+\end{problem}
+
+\begin{solution}
+Let \( X \) be the number of defective widgets in the sample. Then \( X \sim \text{Binomial}(n=500, p=0.05) \).
+The mean and variance of \( X \) are:
+\[ \text{E}[X] = np = 500 \times 0.05 = 25 \]
+\[ \text{Var}(X) = np(1-p) = 500 \times 0.05 \times 0.95 = 23.75 \]
+
+Using the normal approximation, we can approximate \( X \) with a normal distribution:
+\[ X \sim N(25, 23.75) \]
+To find the probability of finding \underline{30 or more} defective widgets, we use the continuity correction:
+\[ P(X \geq 30) \approx P(X > 29.5) \]
+We convert this to a z-score:
+\[ z = \frac{29.5 - 25}{\sqrt{23.75}} \approx \frac{4.5}{4.873} \approx 0.92 \]
+Using the z-table, we find:
+\[ P(Z < 0.92) \approx 0.81859 \]
+Thus, the probability of finding 30 or more defective widgets is:
+\[ P(X \geq 30) = 1 - P(Z < 0.92) \approx 1 - 0.81859 = \boxed{0.18141} \]
+\end{solution}
+% ================================================================================ %
+
+\newpage
+
+% ================================================================================ %
+%                                    Problem 20                                    %
+% ================================================================================ %
+\begin{problem}
+The time \( T \) (in minutes) to solve a complex puzzle follows an exponential distribution with a parameter \( \lambda = 1/15 \).
+If a player is paid based on their time according to the function \( P(T) = 100 - 2T \) dollars, what is the expected payout?
+\end{problem}
+
+\begin{solution}
+The expected payout can be calculated using the formula:
+\[ \text{E}[P(T)] = \int_{0}^{\infty} P(t) f_T(t) \, dt \]
+where \( f_T(t) = \lambda e^{-\lambda t} \) is the PDF of the exponential distribution.
+
+Given \( \lambda = \frac{1}{15} \), the PDF is:
+\[ f_T(t) = \frac{1}{15} e^{-\frac{t}{15}} \text{ for } t \geq 0 \]
+
+Substituting \( P(t) \) and \( f_T(t) \) into the expected payout formula:
+\begin{align*}
+    \text{E}[P(T)] &= \int_{0}^{\infty} (100 - 2t) \cdot \frac{1}{15} e^{-\frac{t}{15}} \, dt \\
+    &= \frac{1}{15} \int_{0}^{\infty} (100 - 2t) e^{-\frac{t}{15}} \, dt \\
+    &= \frac{1}{15} \paren{100 \int_{0}^{\infty} e^{-\frac{t}{15}} \, dt - 2 \int_{0}^{\infty} t e^{-\frac{t}{15}} \, dt} \\
+    &= \frac{1}{15} \paren{100 \sqbracket{-15e^{-\frac{t}{15}}}_{0}^{\infty} - 2 \sqbracket{-15te^{-\frac{t}{15}} - 225e^{-\frac{t}{15}}}_{0}^{\infty}} \\
+    &= \frac{1}{15} \paren{100 \sqbracket{0 - (-15)} - 2 \sqbracket{(0 - 0) - (0 - 225)}} \\
+    &= \frac{1}{15} \paren{100 \cdot 15 - 2 \cdot 225} \\
+    &= \frac{1}{15} \paren{1500 - 450} \\
+    &= \frac{1050}{15} \\
+    \text{E}[P(T)] &= 70
+\end{align*}
+
+Thus, the expected payout is \( \boxed{70 \text{ dollars}} \).
 \end{solution}
 % ================================================================================ %
 
