@@ -18,20 +18,16 @@
 
 
 % ================================================================================ %
-%                                    Problem 0x                                    %
+%                                    Problem 01                                    %
 % ================================================================================ %
 \begin{problem}
-Here's problem statement.
-You can insert sub-problem
-\begin{subproblems}
-    \item Here's sub-problem a.
-    \item Here's sub-problem b.
-    \item Here's sub-problem c.
-\end{subproblems}
+Let \( X \) be a Gaussian distribution with mean 5 and variance 4.
+\( Y \) be a uniform distribution with mean 5 and variance 4.
+\( Z = X + Y \). What should be the expected value and variance of \( Z \)?
 \end{problem}
 
 \begin{solution}
-The solution goes here.
+Coming Soon...
 \end{solution}
 % ================================================================================ %
 
@@ -44,37 +40,105 @@ The solution goes here.
 
 
 % ================================================================================ %
-%                                    Problem 0x                                    %
+%                                    Problem 08                                    %
 % ================================================================================ %
-\begin{problem}
-Here's problem statement.
-You can insert sub-problem
-\begin{subproblems}
-    \item Here's sub-problem a.
-    \item Here's sub-problem b.
-    \item Here's sub-problem c.
-\end{subproblems}
+\begin{problem}[8]
+We have two coins \( A \) and \( B \).
+\( A \) has a 0.7 probability to land heads.
+\( B \) has a 0.5 probability to land heads.
+We use the two coins to play a game of coin tossing.
+Both coins are tossed at the same time, if they both land heads, we win.
+Let \( W \) be the number of wins after we play the game 100,000 times.
+What is the distribution of \( W \)? Answer both the distribution name and its parameters.
+Compute \( P(W > 36, 000) \).
 \end{problem}
 
 \begin{solution}
-The solution goes here.
+Coming Soon...
 \end{solution}
 % ================================================================================ %
 
+\newpage
 
 % ================================================================================ %
-%                                    Problem 016                                    %
+%                                    Problem 16                                    %
 % ================================================================================ %
 \begin{tosubmit}
 \problem[16]
-Here's the problem statement for \textbf{MANDATORY} problem.
+\[
+    P(X, Y) = \begin{cases}
+        c \cdot (x+y) & \text{ if } y \geq x, 0 \leq x \leq 1, 0 \leq y \leq 1 \\
+        0 & \text{otherwise}
+    \end{cases}
+\]
+Find the constant \( c \), \( P(X) \), \( P(Y) \), \( E[X] \), and \( E[Y] \).
 
 \par\noindent\submitsolution
-Here's the solution for the \textbf{MANDATORY} problem. \\
-ABC.
+Given the joint probability density function (pdf) \( P(X, Y) = f_{X,Y}(x, y) \), the integral over the entire support must equal 1:
+\begin{align*}
+    1 &= \int_0^1 \int_x^1 f_{X,Y}(x, y) \, dy \, dx \\
+    &= \int_0^1 \int_x^1 c(x + y) \, dy \, dx \\
+    &= \int_0^1 c \sqbracket{xy + \frac{y^2}{2}}_{y=x}^{y=1} \, dx \\
+    &= \int_0^1 c \sqbracket{x + \frac{1}{2} - x^2 - \frac{x^2}{2}} \, dx \\
+    &= c \int_0^1 \sqbracket{\frac{1}{2} + x - \frac{3}{2}x^2} \, dx \\
+    &= c \sqbracket{\frac{1}{2}x + \frac{1}{2}x^2 - \frac{1}{2}x^3}_{0}^{1} \\
+    1 &= c \cdot \frac{1}{2} \\
+    \implies c &= 2
+\end{align*}
 
-\proof
-Here's the proof for the \textbf{MANDATORY} problem.
+To find the marginal pdfs \( f_X(x) \) and \( f_Y(y) \): \newline
+For \( 0 \leq x \leq 1 \):
+\begin{align*}
+    f_X(x) &= \int_x^1 f_{X,Y}(x, y) \, dy \\
+    &= \int_x^1 2(x + y) \, dy \\
+    &= 2 \sqbracket{xy + \frac{y^2}{2}}_{y=x}^{y=1} \\
+    &= 2 \sqbracket{x + \frac{1}{2} - x^2 - \frac{x^2}{2}} \\
+    f_X(x) &= 1 + 2x - 3x^2
+\end{align*}
+
+For \( 0 \leq y \leq 1 \):
+\begin{align*}
+    f_Y(y) &= \int_0^y f_{X,Y}(x, y) \, dx \\
+    &= \int_0^y 2(x + y) \, dx \\
+    &= 2 \sqbracket{\frac{x^2}{2} + yx}_{0}^{y} \\
+    &= 2 \sqbracket{\frac{y^2}{2} + y^2} \\
+    f_Y(y) &= 3y^2
+\end{align*}
+
+\pagebreak
+
+To find the expected values \( E[X] \) and \( E[Y] \):
+\begin{align*}
+    E[X] &= \int_0^1 x f_X(x) \, dx \\
+    &= \int_0^1 x (1 + 2x - 3x^2) \, dx \\
+    &= \int_0^1 (x + 2x^2 - 3x^3) \, dx \\
+    &= \sqbracket{\frac{x^2}{2} + \frac{2x^3}{3} - \frac{3x^4}{4}}_{0}^{1} \\
+    E[X] &= \frac{1}{2} + \frac{2}{3} - \frac{3}{4} = \frac{5}{12}
+\end{align*}
+
+And,
+\begin{align*}
+    E[Y] &= \int_0^1 y f_Y(y) \, dy \\
+    &= \int_0^1 y (3y^2) \, dy \\
+    &= \int_0^1 3y^3 \, dy \\
+    &= \sqbracket{\frac{3y^4}{4}}_{0}^{1} \\
+    E[Y] &= \frac{3}{4}
+\end{align*}
+
+Thus, the results are:
+\[ \boxed{c = 2}, \]
+
+\[ \boxed{f_X(x) = \begin{cases}
+    1 + 2x - 3x^2 & \text{ for } 0 \leq x \leq 1 \\
+    0 & \text{ otherwise }
+\end{cases}}, \]
+
+\[ \boxed{f_Y(y) = \begin{cases}
+    3y^2 & \text{ for } 0 \leq y \leq 1 \\
+    0 & \text{ otherwise }
+\end{cases}}, \]
+
+\[ \boxed{E[X] = \frac{5}{12}}, \quad \boxed{E[Y] = \frac{3}{4}} \]
 \end{tosubmit}
 % ================================================================================ %
 
