@@ -32,8 +32,6 @@
 \subject[2110205 - Statistics for Computer Engineering]
 \hwtitle{5}{}{Week 6}{6733172621 Patthadon Phengpinij}{ChatGPT (for\,\LaTeX\,styling and grammar checking)}
 
-\zScoreTable{1.2}
-
 % ================================================================================ %
 \section{Week 6: Continuous Random Variables}
 % ================================================================================ %
@@ -63,7 +61,6 @@ For each statement below, determine if it is True or False.
 \end{solution}
 % ================================================================================ %
 
-\newpage
 
 % ================================================================================ %
 %                                    Problem 02                                    %
@@ -133,7 +130,6 @@ f(x) = \begin{cases}
 \end{solution}
 % ================================================================================ %
 
-\newpage
 
 % ================================================================================ %
 %                                    Problem 03                                    %
@@ -213,13 +209,14 @@ F(x) = \begin{cases}
 \boxed{F(x) = \begin{cases}
     0 & x < 0 \\
     \frac{x^2}{8} & 0 \leq x < 2 \\
-    x - \frac{x^2}{8} - \frac{3}{2} & 2 \leq x < 4 \\
+    x - \frac{x^2}{8} - 1 & 2 \leq x < 4 \\
     1 & x \geq 4
 \end{cases}} \; \textbf{b).}
 \]
 \end{solution}
 % ================================================================================ %
 
+\newpage
 
 % ================================================================================ %
 %                                    Problem 04                                    %
@@ -234,7 +231,7 @@ From the previous problem, we have the CDF:
 F(x) = \begin{cases}
     0 & x \leq 0 \\
     \frac{x^2}{8} & 0 \leq x \leq 2 \\
-    x - \frac{3}{2} & 2 \leq x \leq 4 \\
+    x - \frac{x^2}{8} - 1 & 2 \leq x < 4 \\
     1 & x \geq 4
 \end{cases}
 \]
@@ -254,9 +251,25 @@ We consider the piecewise nature of the CDF:
     
     \item For \( 2 \leq m \leq 4 \):
     \[
-    F(m) = m - \frac{3}{2} = 0.5
+    F(m) = m - \frac{m^2}{8} - 1 = 0.5
     \]
     Solving for \( m \):
+    \[
+    m - \frac{m^2}{8} = 1.5
+    \]
+    Multiplying through by 8 to eliminate the fraction:
+    \[
+    8m - m^2 = 12
+    \]
+    Rearranging gives us a quadratic equation:
+    \[
+    m^2 - 8m + 12 = 0
+    \]
+    Factoring:
+    \[
+    (m - 6)(m - 2) = 0
+    \]
+    Thus, \( m = 6 \) or \( m = 2 \). Since we are considering the interval \( [2, 4] \), we have:
     \[
     m = 2 \implies m \in [2, 4], \underline{\textbf{valid.}}
     \]
@@ -266,6 +279,7 @@ Thus, the median of the random variable \( X \) is \( \boxed{2} \).
 \end{solution}
 % ================================================================================ %
 
+\newpage
 
 % ================================================================================ %
 %                                    Problem 05                                    %
@@ -475,7 +489,7 @@ From the z-table provided, we can use the standard normal distribution to find t
     \includegraphics[width=0.70\textwidth]{Images/z-score.png}
 \end{center}
 
-Let \( X \) be the random variable representing the exam scores, where \( X \sim N(72, 12^2) \).
+Let \( X \) be the random variable representing the exam scores, where \( X \sim \mathcal{N}(72, 12^2) \).
 
 \vspace{2mm}
 
@@ -507,7 +521,7 @@ What is the minimum score a student must get to receive an `A'?
 \end{problem}
 
 \begin{solution}
-From Problem 11, we know that the exam scores follow a normal distribution: \[ X \sim N(72, 12^2) \]
+From Problem 11, we know that the exam scores follow a normal distribution: \[ X \sim \mathcal{N}(72, 12^2) \]
 
 To find the minimum score a student must get to receive an `A',
 we need to find the score corresponding to the 90th percentile of the distribution.
@@ -570,8 +584,8 @@ Find the value of \( c \) for a standard normal variable \( Z \) such that:
 %                                    Problem 15                                    %
 % ================================================================================ %
 \begin{problem}
-The weight of coffee in a ``large'' cup from a machine is \( X \sim N(400, 100) \) (in ml).
-The weight of milk added is \( Y \sim N(50, 25) \). Assume \( X \) and \( Y \) are independent.
+The weight of coffee in a ``large'' cup from a machine is \( X \sim \mathcal{N}(400, 100) \) (in ml).
+The weight of milk added is \( Y \sim \mathcal{N}(50, 25) \). Assume \( X \) and \( Y \) are independent.
 \begin{subproblems}
     \item Let \( T = X + Y \) be the total volume. What are \( \text{E}[T] \) and \( \text{Var}(T) \)?
     \item  What is the probability the total volume exceeds 460 ml?
@@ -584,7 +598,7 @@ The weight of milk added is \( Y \sim N(50, 25) \). Assume \( X \) and \( Y \) a
 \[ \text{Var}(T) = \text{Var}(X) + \text{Var}(Y) = 100 + 25 = \boxed{125 \text{ ml}^2} \]
 
 \textbf{b).} To find the probability that the total volume exceeds 460 ml, we first find the distribution of \( T \):
-\[ T \sim N(450, 125) \]
+\[ T \sim \mathcal{N}(450, 125) \]
 We need to calculate \( P(T > 460) \). We first convert this to a z-score:
 \[ z = \frac{460 - 450}{\sqrt{125}} = \frac{10}{\sqrt{125}} \approx 0.9 \]
 Using the z-table, we find:
@@ -603,11 +617,11 @@ Thus, the probability that the total volume exceeds 460 ml is:
 
 \begin{solution}
 Let \( D = B - C \). Since \( B \) and \( C \) are independent normal random variables, \( D \) is also normally distributed:
-\[ D \sim N(\text{E}[B] - \text{E}[C], \text{Var}(B) + \text{Var}(C)) \]
+\[ D \sim \mathcal{N}(\text{E}[B] - \text{E}[C], \text{Var}(B) + \text{Var}(C)) \]
 Calculating the mean and variance of \( D \):
 \[ \text{E}[D] = 120 - 125 = -5 \]
 \[ \text{Var}(D) = 16 + 9 = 25 \]
-Thus, \( D \sim N(-5, 25) \).
+Thus, \( D \sim \mathcal{N}(-5, 25) \).
 
 We need to find \( P(D > 0) \), which is equivalent to finding \( P(B > C) \).
 We first convert this to a z-score:
@@ -714,7 +728,7 @@ The mean and variance of \( X \) are:
 \[ \text{Var}(X) = np(1-p) = 500 \times 0.05 \times 0.95 = 23.75 \]
 
 Using the normal approximation, we can approximate \( X \) with a normal distribution:
-\[ X \sim N(25, 23.75) \]
+\[ X \sim \mathcal{N}(25, 23.75) \]
 To find the probability of finding \underline{30 or more} defective widgets, we use the continuity correction:
 \[ P(X \geq 30) \approx P(X > 29.5) \]
 We convert this to a z-score:
@@ -761,5 +775,8 @@ Thus, the expected payout is \( \boxed{70 \text{ dollars}} \).
 \end{solution}
 % ================================================================================ %
 
+\vspace{1.5cm}
+
+\zScoreTable{1.2}
 
 \end{document}
