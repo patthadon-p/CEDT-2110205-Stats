@@ -1,6 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
 
-
 % =========================== Basic packages ===========================
 \RequirePackage{amsmath, amssymb, amsthm} % Math environments and symbols
 \RequirePackage{geometry} % Page margins
@@ -11,25 +10,35 @@
 \RequirePackage{pgfplots}
 \RequirePackage{xcolor} % Color support
 
-
 % Use Package
-\usepackage{sectsty}
-\usepackage{etoolbox}
-\usepackage{listings}
+\usepackage{soul}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{esvect}
 \usepackage{xcolor}
 \usepackage{xparse}
 \usepackage{environ}
 \usepackage{amssymb}
+\usepackage{sectsty}
+\usepackage{caption}
+\usepackage{etoolbox}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{makecell}
 \usepackage{mdframed}
 \usepackage{booktabs}
+\usepackage{arydshln}
+\usepackage{pdfpages}
+\usepackage{inconsolata}
+\usepackage[T1]{fontenc}
 \usepackage[most]{tcolorbox}
+\captionsetup{labelfont=bf}
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 
 \usepackage{amsmath}
 \allowdisplaybreaks
-
 
 % =========================== Page setup ===========================
 \geometry{
@@ -39,8 +48,8 @@
   top=3cm,
   bottom=3cm,
 }
+\setlength{\headheight}{14.49998pt}
 \sectionfont{\large}
-
 
 % =========================== Header and footer setup ===========================
 \pagestyle{fancy}
@@ -50,39 +59,57 @@
 
 \renewcommand{\footrulewidth}{0.4pt}
 
+\newcommand{\currentsubject}{}
+
 \newcommand{\subject}[1][2110205 - Statistics for Computer Engineering]{
-  \fancyhead[L]{\textbf{#1}}
+  \renewcommand{\currentsubject}{#1}%
+  \fancyhead[L]{\textbf{#1}}%
 }
 
+\newcommand{\currentfooter}{}
+
+\newcommand{\setfooter}[1]{%
+  \renewcommand{\currentfooter}{#1}%
+  \fancyfoot[C]{\textbf{#1}}%
+}
+
+% =========================== Set paragraph spacing ===========================
+\setlength{\parskip}{4pt}       % Space between paragraphs  
+
+% =========================== Set Vertical and Horizontal Spacing ===========================
+\NewDocumentCommand{\myspace}{ O{v} O{4} O{mm} }{%
+  \ifstrequal{#1}{h}
+  {\hspace{#2#3}}
+  {\vspace{#2#3}}%
+}
 
 % =========================== Title command ===========================
 \newcommand{\hwtitle}[5]{
   \begin{center}
     \ifx&#2&
-      {\LARGE \bfseries Homework #1} \\[6pt]
+    {\LARGE \bfseries Homework #1} \\[6pt]
     \else
-      {\LARGE \bfseries #2} \\[6pt]
+    {\LARGE \bfseries #2} \\[6pt]
     \fi
     {\large #3} \\[2pt]
     {\small \text{#4}} \\
     \ifx&#5&
-      %
+    %
     \else
-      {\small \textit{Collaborators.} #5}%
+    {\small \textit{Collaborators.} #5}%
     \fi
   \end{center}
 
   \ifx&#2&
-    \fancyfoot[C]{\textbf{Homework #1}}
+  \fancyfoot[C]{\textbf{Homework #1}}
   \else
-    \fancyfoot[C]{\textbf{#2}}
+  \fancyfoot[C]{\textbf{#2}}
   \fi
 
   \vspace{12pt}
   \hrule
   \vspace{12pt}
 }
-
 
 % =========================== Problem environment ===========================
 %Counter
@@ -97,8 +124,8 @@
   \stepcounter{problem}
   \edef\thisNum{\theproblem}
   \ifinlist{\thisNum}{\usedproblems}
-    {\nextunusedproblem} % continue recursion
-    {} % stop if unused
+  {\nextunusedproblem} % continue recursion
+  {} % stop if unused
 }
 
 \newenvironment{problem}[1][]{
@@ -112,8 +139,8 @@
     \setcounter{problem}{\maybeNum}
     \edef\thisNum{\theproblem}
     \ifinlist{\thisNum}{\usedproblems}
-      {\PackageWarning{problem}{Problem number \thisNum\space already used; reusing it}}%
-      {}
+    {\PackageWarning{problem}{Problem number \thisNum\space already used; reusing it}}%
+    {}
   \fi
   % Now record number only once
   \ifinlist{\thisNum}{\usedproblems}{}{
@@ -124,7 +151,6 @@
 }{
   \par\vspace{10pt}
 }
-
 
 % =========================== Common math shortcuts ===========================
 \newcommand{\R}{\mathbb{R}}
@@ -137,7 +163,6 @@
 \newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\paren}[1]{\left(#1\right)}
 \newcommand{\sqbracket}[1]{\left[#1\right]}
-
 
 % =========================== Theorem styles ===========================
 \theoremstyle{definition}
@@ -152,17 +177,36 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 
-
 % =========================== Custom enumerate for subproblems ===========================
-\newlist{subproblems}{enumerate}{1}
+\newlist{subproblems}{enumerate}{2}
 \setlist[subproblems]{
-  label=\textbf{\alph*)},
+  label*=\arabic{problem}.\arabic*,
+  ref=\arabic{problem}.\arabic*,
   wide=0pt,
   itemsep=2pt,
   parsep=0pt,
   leftmargin=*
 }
 
+\newlist{subproblems_alpha}{enumerate}{2}
+\setlist[subproblems_alpha]{
+  label*=\alph*),
+  ref=\alph*),
+  wide=0pt,
+  itemsep=2pt,
+  parsep=0pt,
+  leftmargin=*
+}
+
+\newlist{Tsubsubproblems}{enumerate}{3}
+\setlist[Tsubsubproblems]{
+  label*=T\arabic{problem}.\arabic{subproblemsi}.\arabic*,
+  ref=T\arabic{problem}.\arabic{subproblemsi}.\arabic*,
+  wide=0pt,
+  itemsep=2pt,
+  parsep=0pt,
+  leftmargin=*,
+}
 
 % =========================== Hyperref setup ===========================
 \hypersetup{
@@ -172,22 +216,27 @@
   citecolor=blue,
 }
 
-
 % =========================== Solution ===========================
 \newtcolorbox{solution}[1][]{
   enhanced,
   breakable,
-  colback=gray!5!white,
-  colframe=gray!75!black,
+  colback=gray!10!white,
+  colframe=black,
   fonttitle=\bfseries,
   title=Solution.\enspace,
-  coltitle=gray!75!black,
+  coltitle=black,
+  arc=0pt,
   attach title to upper,
   boxed title style=colback=gray!25!white,
   #1,
 }
 
 % =========================== To Submit ===========================
+\newcommand{\submitsolution}{%
+  \par\noindent
+  \textbf{\textcolor{red!50!black}{Solution.\enspace}}%
+}
+
 \newtcolorbox{tosubmit}[1][]{
   enhanced,
   breakable,
@@ -196,77 +245,166 @@
   fonttitle=\bfseries,
   title=TO SUBMIT,
   coltitle=white,
-  attach boxed title to top center={yshift=-2mm}, % center title,
-  before upper={\setlength{\parindent}{0pt}\noindent},
+  arc=0pt,
+  attach boxed title to top center={yshift=-2mm},
   boxed title style={
-    colback=red!65!black,     % background of title
-    colframe=red!65!black,    % border same as background
-    width=0.5\linewidth,      % make title box narrower
-    sharp corners,            % or rounded corners
-    boxrule=0pt,              % remove border line
-    enlarge left by=0mm,
-    enlarge right by=0mm,
-    halign=center,            % center text inside
-  },
+      colback=red!65!black,
+      colframe=red!65!black,
+      width=0.5\linewidth,
+      sharp corners,
+      boxrule=0pt,
+      enlarge left by=0mm,
+      enlarge right by=0mm,
+      halign=center,
+    },
   parbox=false,
-  #1,
+  before upper={
+      \setlength{\parindent}{0pt}%
+      \noindent
+      \submitsolution
+    },
+  #1
 }
 
-\newtcolorbox{submit-solution}[1][]{
+% =========================== Proof ===========================
+\newtcolorbox{proofbox}[1][]{
   enhanced,
-  colback=red!3!white,
-  colframe=red!50!black,
+  breakable,
+  colback=blue!5!white,
+  colframe=blue!75!black,
   fonttitle=\bfseries,
-  title=Solution.\enspace,
-  coltitle=red!50!black,
+  title=\textit{Proof}.\enspace,
+  coltitle=blue!75!black,
   attach title to upper,
-  boxed title style={colback=red!10!white},
+  boxed title style=colback=blue!25!white,
   #1,
 }
 
-\newcommand{\submitsolution}{\par\noindent\textbf{\textcolor{red!50!black}{Solution.\enspace}}}
-
-    
 % =========================== Coding ===========================
-\tcbuselibrary{listings,breakable,skins}
+\tcbuselibrary{listings, breakable, skins}
 
-% Custom colors
-\definecolor{codebg}{RGB}{240, 248, 255}
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{codeblue}{rgb}{0.25,0.35,0.75}
+% ======================================
+% Colors
+% ======================================
 
-% Listings style
-\lstdefinestyle{mycodingstyle}{
-    language=Python,
-    backgroundcolor=\color{codebg},
-    basicstyle=\ttfamily\small,
-    keywordstyle=\color{codeblue}\bfseries,
-    commentstyle=\color{codegreen},
-    stringstyle=\color{codepurple},
-    numberstyle=\tiny\color{codegray},
-    numbers=left,
-    numbersep=8pt,
-    stepnumber=1,
-    frame=none,
-    breaklines=true,
-    breakatwhitespace=false,
-    showstringspaces=false,
-    keepspaces=true,
-    captionpos=b,
-    tabsize=2,
+% Editor background
+\definecolor{editorbg}{HTML}{F3F3F3}
+
+% Main text
+\definecolor{editortext}{HTML}{1E1E1E}
+
+% Syntax colors
+\definecolor{keywordcolor}{HTML}{0000FF}
+\definecolor{stringcolor}{HTML}{C06000}
+\definecolor{commentcolor}{HTML}{008000}
+\definecolor{numbercolor}{HTML}{A0A0A0}
+
+\definecolor{editorbg}{HTML}{F5F5F5}
+\definecolor{gutterbg}{HTML}{606060}
+
+\definecolor{outerborder}{HTML}{505050}
+
+\definecolor{guttertext}{HTML}{EFEFEF}
+
+% ======================================
+% Listings Style
+% ======================================
+
+\lstdefinestyle{notepadstyle}{
+  language=Python,
+  backgroundcolor=\color{editorbg},
+  basicstyle=\ttfamily\small\color{editortext},
+  tabsize=2,
+  keywordstyle=\bfseries\color{keywordcolor},
+  commentstyle=\itshape\color{commentcolor},
+  numberstyle=\tiny\color{numbercolor},
+  stringstyle=\color{stringcolor},
+  numbers=left,
+  numberstyle=\footnotesize\ttfamily\color{guttertext},
+  numbersep=10pt,
+  xleftmargin=24pt,
+  showstringspaces=false,
+  keepspaces=true,
+  breaklines=true,
+  columns=fullflexible,
+  frame=none,
+  aboveskip=0pt,
+  belowskip=0pt
 }
+
+% ======================================
+% Code Box
+% ======================================
 
 \newtcblisting{codingbox}[1][]{
   enhanced,
   breakable,
-  colback=white,
-  colframe=white,
-  boxrule=0pt,
-  width=0.9\linewidth,
-  box align=center,
-  listing engine=listings,
+  colback=editorbg,
+  colframe=outerborder,
+  boxrule=1pt,
+  left=0pt,
+  right=6pt,
+  top=6pt,
+  bottom=6pt,
+  underlay={
+      \fill[gutterbg]
+      (frame.north west)
+      rectangle
+      ([xshift=24pt]frame.south west);
+    },
+  overlay={
+      % Vertical separator
+      \draw[outerborder, line width=0.5pt]
+      ([xshift=24pt]frame.north west) --
+      ([xshift=24pt]frame.south west);
+    },
   listing only,
-  listing options={style=mycodingstyle,#1}
+  listing engine=listings,
+  listing options={
+      style=notepadstyle,
+      #1
+    }
 }
+
+% =========================== Appendix inclusion ===========================
+
+% Appendix title page style
+\fancypagestyle{appendixtitle}{
+  \fancyhf{}
+  \fancyhead[L]{\textbf{\currentsubject}}
+  \fancyhead[R]{\thepage}
+  \fancyfoot[C]{\textbf{\currentfooter}}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+% Appendix counter
+\newcounter{myappendix}
+
+\newcommand{\myappendix}[2]{%
+  % #1 = path/to/file.pdf
+  % #2 = appendix title (PDF name / description)
+
+  \refstepcounter{myappendix}
+
+  % ---------- Title page ----------
+  \clearpage
+  \thispagestyle{appendixtitle}
+
+  \vspace*{\fill}
+  \begin{center}
+    {\Huge\bfseries APPENDIX~\arabic{myappendix}\par}
+    \vspace{1.5em}
+    {\huge #2\par}
+  \end{center}
+  \vspace*{\fill}
+
+  \clearpage
+
+  % ---------- PDF content ----------
+  \includepdf[
+    pages=-,
+    pagecommand={},
+  ]{#1}
+}
+
+% ==============================================
