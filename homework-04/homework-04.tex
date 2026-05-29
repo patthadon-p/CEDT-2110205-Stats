@@ -21,9 +21,9 @@
 \begin{problem}
 A fair 10-sided die is rolled. Let \( X \) be the random variable representing the outcome of the roll.
 \begin{subproblems_alpha}
-	\item What is the expectation \( E[X] \)?
+	\item What is the expectation \( \text{E}[X] \)?
 	\item What is the variance \( \text{Var}(X) \)?
-	\item Let \( Y = 5X - 3 \). Calculate \( E[Y] \) and \( \text{Var}(Y) \).
+	\item Let \( Y = 5X - 3 \). Calculate \( \text{E}[Y] \) and \( \text{Var}(Y) \).
 \end{subproblems_alpha}
 \end{problem}
 
@@ -31,11 +31,11 @@ A fair 10-sided die is rolled. Let \( X \) be the random variable representing t
 	In this situation, we have a discrete uniform distribution--\( X \sim \text{Uniform}(10) \).
 	For uniform distribution \( Z \sim \text{Uniform}(n) \):
 	\[
-		E[Z] = \frac{n + 1}{2}, \quad \text{Var}(Z) = \frac{n^2 - 1}{12}
+		\text{E}[Z] = \frac{n + 1}{2}, \quad \text{Var}(Z) = \frac{n^2 - 1}{12}
 	\]
 	Therefore,
 	\[
-		E[X] = \frac{10 + 1}{2} = \frac{11}{2} = \boxed{5.5} \; \textbf{a).}
+		\text{E}[X] = \frac{10 + 1}{2} = \frac{11}{2} = \boxed{5.5} \; \textbf{a).}
 	\]
 	and,
 	\[
@@ -47,7 +47,7 @@ A fair 10-sided die is rolled. Let \( X \) be the random variable representing t
 
 	Because,
 	\[
-		E(aX + b) = aE(X) + b
+		\text{E}[aX + b] = a\text{E}[X] + b
 	\]
 	and,
 	\[
@@ -55,11 +55,11 @@ A fair 10-sided die is rolled. Let \( X \) be the random variable representing t
 	\]
 	while, \( Y = 5X - 3 \). Thus,
 	\begin{align*}
-		E(Y) & = E(5X - 3)        \\
-		     & = 5E(X) - 3        \\
-		     & = 5 \times 5.5 - 3 \\
-		     & = 27.5 - 3         \\
-		     & = 24.5
+		\text{E}[Y] & = \text{E}[5X - 3] \\
+		            & = 5\text{E}[X] - 3 \\
+		            & = 5 \times 5.5 - 3 \\
+		            & = 27.5 - 3         \\
+		            & = 24.5
 	\end{align*}
 	and,
 	\begin{align*}
@@ -71,7 +71,7 @@ A fair 10-sided die is rolled. Let \( X \) be the random variable representing t
 
 	Which means
 	\[\boxed{
-			E(Y) = 24.5, \; \text{Var}(Y) = 206.25
+			\text{E}[Y] = 24.5, \; \text{Var}(Y) = 206.25
 		} \; \textbf{c).} \]
 \end{solution}
 % ================================================================================ %
@@ -83,9 +83,9 @@ A fair 10-sided die is rolled. Let \( X \) be the random variable representing t
 A student takes a multiple-choice quiz. For a single question, the probability of answering correctly is 0.8.
 Let \( X = 1 \) if the answer is correct and \( X = 0 \) otherwise.
 \begin{subproblems_alpha}
-	\item Find the expectation \( E[X] \).
+	\item Find the expectation \( \text{E}[X] \).
 	\item Find the variance \( \text{Var}(X) \).
-	\item Calculate \( E[X^2] \).
+	\item Calculate \( \text{E}[X^2] \).
 \end{subproblems_alpha}
 \end{problem}
 
@@ -93,22 +93,22 @@ Let \( X = 1 \) if the answer is correct and \( X = 0 \) otherwise.
 	This distribution is a Bernoulli distribution--\( X \sim \text{Bernoulli}(0.8) \).
 	The expected value and variance of \( Y \sim \text{Bernoulli}(p) \) are:
 	\[
-		E[Y] = p, \quad \text{Var}(Y) = p(1 - p)
+		\text{E}[Y] = p, \quad \text{Var}(Y) = p(1 - p)
 	\]
 	Thus,
 	\[
-		E[X] = \boxed{0.8} \; \textbf{a).}
+		\text{E}[X] = \boxed{0.8} \; \textbf{a).}
 	\]
 	and,
 	\[
 		\text{Var}(X) = 0.8(1 - 0.8) = 0.8 \cdot 0.2 = \boxed{0.16} \; \textbf{b).}
 	\]
-	Because, \( \text{Var}(X) = E[X^2] - E[X]^2 \), so that:
+	Because, \( \text{Var}(X) = \text{E}[X^2] - \text{E}[X]^2 \), so that:
 	\begin{align*}
-		E[X^2] & = \text{Var}(X) + E[X]^2      \\
-		       & = 0.16 + (0.8)^2              \\
-		       & = 0.16 + 0.64                 \\
-		       & = \boxed{0.8} \; \textbf{c).}
+		\text{E}[X^2] & = \text{Var}(X) + \text{E}[X]^2 \\
+		              & = 0.16 + (0.8)^2                \\
+		              & = 0.16 + 0.64                   \\
+		              & = \boxed{0.8} \; \textbf{c).}
 	\end{align*}
 \end{solution}
 % ================================================================================ %
@@ -122,7 +122,7 @@ A sample of 20 chips is selected for testing.
 Let \( Y \) be the number of defective chips in the sample.
 \begin{subproblems_alpha}
 	\item What is the probability of finding exactly 2 defective chips?
-	\item What is the expected number of defective chips, \( E[Y] \)?
+	\item What is the expected number of defective chips, \( \text{E}[Y] \)?
 	\item What is the variance of the number of defective chips, \( \text{Var}(Y) \)?
 \end{subproblems_alpha}
 \end{problem}
@@ -136,10 +136,10 @@ Let \( Y \) be the number of defective chips in the sample.
 		P(Y = 2) = \binom{20}{2} (0.05)^{2} (0.95)^{18} \approx \boxed{0.1887}
 	\]
 
-	\par\textbf{b).} The expected number of defective chips, \( E[Y] \),
+	\par\textbf{b).} The expected number of defective chips, \( \text{E}[Y] \),
 	is the expected value of a binomial distribution, \( Y \sim \text{Binomial}(20, 0.05) \):
 	\[
-		E(Y) = (20)(0.05) = \boxed{1}
+		\text{E}[Y] = (20)(0.05) = \boxed{1}
 	\]
 
 	\par\textbf{c).} The variance of number of defective chips, \( \text{Var}[Y] \),
@@ -160,7 +160,7 @@ The average number of calls arriving at a customer service center is 8 calls per
 Let \( X \) be the number of calls in a given hour.
 \begin{subproblems_alpha}
 	\item What is the probability that exactly 5 calls are received in one hour?
-	\item What is the expectation \( E[X] \) and variance \( \text{Var}(X) \).
+	\item What is the expectation \( \text{E}[X] \) and variance \( \text{Var}(X) \).
 	\item If the call center is open for 8 hours, what is the expected total number of calls?
 \end{subproblems_alpha}
 \end{problem}
@@ -178,14 +178,14 @@ Let \( X \) be the number of calls in a given hour.
 
 	The expected value and variance of \( Y \sim \text{Poisson}(\lambda) \) are:
 	\[
-		E[Y] = \lambda, \quad \text{Var}(Y) = \lambda
+		\text{E}[Y] = \lambda, \quad \text{Var}(Y) = \lambda
 	\]
 	Thus,
 	\[
-		\boxed{E[X] = \text{Var}(X) = 8} \; \textbf{b).}
+		\boxed{\text{E}[X] = \text{Var}(X) = 8} \; \textbf{b).}
 	\]
 
-	The expected value of the total number of calls in one hour is \( E[X] = 8 \), so that
+	The expected value of the total number of calls in one hour is \( \text{E}[X] = 8 \), so that
 	\[
 		\text{Total number of calls in 8 hours} = 8 \text{hour} \times \frac{8 \text{call}}{1 \text{hour}} = \boxed{64 \, \text{calls}} \; \textbf{c).}
 	\]
@@ -196,19 +196,19 @@ Let \( X \) be the number of calls in a given hour.
 %                                    Problem 05                                    %
 % ================================================================================ %
 \begin{problem}
-Let X be a random variable with \( E[X] = 6 \) and \( \text{Var}(X) = 2 \).
+Let X be a random variable with \( \text{E}[X] = 6 \) and \( \text{Var}(X) = 2 \).
 Let \( Y = -2X + 7 \).
 \begin{subproblems_alpha}
-	\item Find \( E[Y] \).
+	\item Find \( \text{E}[Y] \).
 	\item Find \( \text{Var}(Y) \).
-	\item Calculate \( E[X^2] \).
+	\item Calculate \( \text{E}[X^2] \).
 \end{subproblems_alpha}
 \end{problem}
 
 \begin{solution}
 	Because \( Y = -2X + 7 \):
 	\[
-		E[Y] = -2E[X] + 7 = -2(6) + 7 = -12 + 7 = \boxed{-5} \; \textbf{a).}
+		\text{E}[Y] = -2\text{E}[X] + 7 = -2(6) + 7 = -12 + 7 = \boxed{-5} \; \textbf{a).}
 	\]
 
 	and,
@@ -218,12 +218,12 @@ Let \( Y = -2X + 7 \).
 
 	\myspace
 
-	From the relation, \( \text{Var}(X) = E[X^2] - E[X]^2 \), we can compute \( E[X^2] \):
+	From the relation, \( \text{Var}(X) = \text{E}[X^2] - \text{E}[X]^2 \), we can compute \( \text{E}[X^2] \):
 	\begin{align*}
-		E[X^2] & = \text{Var}(X) + E[X]^2     \\
-		       & = 2 + 6^2                    \\
-		       & = 2 + 36                     \\
-		       & = \boxed{38} \; \textbf{c).}
+		\text{E}[X^2] & = \text{Var}(X) + \text{E}[X]^2 \\
+		              & = 2 + 6^2                       \\
+		              & = 2 + 36                        \\
+		              & = \boxed{38} \; \textbf{c).}
 	\end{align*}
 \end{solution}
 % ================================================================================ %
@@ -237,7 +237,7 @@ Let \( Y = -2X + 7 \).
 A number \( X \) is chosen at random from the set \( \{1, 2, 3, \dots , 12\} \).
 A prize is awarded based on the formula \( P = 3X^2 - 5 \).
 \begin{subproblems_alpha}
-	\item Find the expected value of the prize, \( E[P] \).
+	\item Find the expected value of the prize, \( \text{E}[P] \).
 	\item Find the variance of \( X \).
 \end{subproblems_alpha}
 \( \paren{\text{Hint: } \sum_{i=1}^n i = \frac{n(n+1)}{2} \text{ and } \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}} \)
@@ -245,35 +245,35 @@ A prize is awarded based on the formula \( P = 3X^2 - 5 \).
 
 \begin{tosubmit}
 	\[
-		E[P] = E[3X^2 - 5] = 3E[X^2] - 5
+		\text{E}[P] = \text{E}[3X^2 - 5] = 3\text{E}[X^2] - 5
 	\]
 
 	\par While \( X \sim \text{Uniform}(12) \), the expectation of Uniform Distribution is:
 	\[
-		E[X] = \frac{n+1}{2} = \frac{12+1}{2} = 6.5
+		\text{E}[X] = \frac{n+1}{2} = \frac{12+1}{2} = 6.5
 	\]
 	and the variance of Uniform Distribution is:
 	\[
 		\text{Var}(X) = \frac{n^2 - 1}{12} = \frac{12^2 - 1}{12} = \boxed{\frac{143}{12}} \; \text{b).}
 	\]
 
-	We can calculate \( E[X^2] \) as follows:
+	We can calculate \( \text{E}[X^2] \) as follows:
 	\begin{align*}
-		\text{Var}(X) & = E[X^2] - \paren{E[x]}^2        \\
-		E[X^2]        & = \text{Var}(X) + \paren{E[x]}^2 \\
-		              & = \frac{143}{12} + (6.5)^2       \\
-		              & = \frac{143}{12} + \frac{169}{4} \\
-		              & = \frac{650}{12}                 \\
-		E[X^2]        & = \frac{325}{6}
+		\text{Var}(X) & = \text{E}[X^2] - \paren{\text{E}[x]}^2 \\
+		\text{E}[X^2] & = \text{Var}(X) + \paren{\text{E}[x]}^2 \\
+		              & = \frac{143}{12} + (6.5)^2              \\
+		              & = \frac{143}{12} + \frac{169}{4}        \\
+		              & = \frac{650}{12}                        \\
+		\text{E}[X^2] & = \frac{325}{6}
 	\end{align*}
 
 	we know that:
 	\begin{align*}
-		E[P] & = 3E[X^2] - 5                 \\
-		     & = 3 \times \frac{325}{6} - 5  \\
-		     & = \frac{325}{2} - 5           \\
-		     & = \frac{315}{2}               \\
-		     & = \boxed{157.5} \; \text{a).}
+		\text{E}[P] & = 3\text{E}[X^2] - 5          \\
+		            & = 3 \times \frac{325}{6} - 5  \\
+		            & = \frac{325}{2} - 5           \\
+		            & = \frac{315}{2}               \\
+		            & = \boxed{157.5} \; \text{a).}
 	\end{align*}
 \end{tosubmit}
 % ================================================================================ %
@@ -288,7 +288,7 @@ A scientist runs an experiment that succeeds with probability \( p = 0.4 \).
 The experiments are run until one is successful. The cost of each experiment is \$100.
 Let \( N \) be the number of experiments run.
 \begin{subproblems_alpha}
-	\item What is the expected total cost, \( E[100N] \)?
+	\item What is the expected total cost, \( \text{E}[100N] \)?
 	\item What is the variance of the total cost, \( \text{Var}(100N) \)?
 \end{subproblems_alpha}
 \end{problem}
@@ -298,11 +298,11 @@ Let \( N \) be the number of experiments run.
 
 	The expected value of a geometrically distributed random variable is given by:
 	\[
-		E[N] = \frac{1}{p} = \frac{1}{0.4} = 2.5
+		\text{E}[N] = \frac{1}{p} = \frac{1}{0.4} = 2.5
 	\]
 	Thus, the expected total cost is:
 	\[
-		E[100N] = 100E[N] = 100 \times 2.5 = \boxed{250} \; \textbf{a).}
+		\text{E}[100N] = 100\text{E}[N] = 100 \times 2.5 = \boxed{250} \; \textbf{a).}
 	\]
 
 	The variance of a geometrically distributed random variable is given by:
@@ -445,7 +445,7 @@ You roll a fair six-sided die. Let the outcome be \( K \).
 You then flip a biased coin \( K \) times. The coin has a probability of heads of 0.7.
 Let \( H \) be the number of heads obtained.
 \begin{subproblems_alpha}
-	\item Find the expected number of heads, \( E[H] \).
+	\item Find the expected number of heads, \( \text{E}[H] \).
 	\item Find the variance of the number of heads, \( \text{Var}(H) \).
 \end{subproblems_alpha}
 \end{problem}
@@ -457,29 +457,29 @@ Let \( H \) be the number of heads obtained.
 	\]
 	\par\noindent\textbf{a).} From the law of total expectation:
 	\[
-		E[H] = E[E[H | K]]
+		\text{E}[H] = \text{E}[\text{E}[H | K]]
 	\]
 	Thus,
 	\begin{align*}
-		E[H] & = E[E[H | K]]                \\
-		     & = E[K \times 0.7]            \\
-		     & = 0.7 \times E[K]            \\
-		     & = 0.7 \times \frac{6 + 1}{2} \\
-		     & = 0.7 \times \frac{7}{2}     \\
-		     & = 0.7 \times 3.5             \\
-		     & = \boxed{2.45}
+		\text{E}[H] & = \text{E}[\text{E}[H | K]]  \\
+		            & = \text{E}[K \times 0.7]     \\
+		            & = 0.7 \times \text{E}[K]     \\
+		            & = 0.7 \times \frac{6 + 1}{2} \\
+		            & = 0.7 \times \frac{7}{2}     \\
+		            & = 0.7 \times 3.5             \\
+		            & = \boxed{2.45}
 	\end{align*}
 
 	\par\noindent\textbf{b).} From the law of total variance:
 	\[
-		\text{Var}(H) = E[\text{Var}(H | K)] + \text{Var}(E[H | K])
+		\text{Var}(H) = \text{E}[\text{Var}(H | K)] + \text{Var}(\text{E}[H | K])
 	\]
 	Thus,
 	\begin{align*}
-		\text{Var}(H) & = E[\text{Var}(H | K)] + \text{Var}(E[H | K])                                  \\
-		              & = E[K \times 0.7 \times (1 - 0.7)] + \text{Var}(K \times 0.7)                  \\
-		              & = E[K \times 0.21] + \paren{(0.7)^2 \times \text{Var}(K)}                      \\
-		              & = \paren{0.21 \times E[K]} + \paren{0.49 \times \text{Var}(K)}                 \\
+		\text{Var}(H) & = \text{E}[\text{Var}(H | K)] + \text{Var}(\text{E}[H | K])                    \\
+		              & = \text{E}[K \times 0.7 \times (1 - 0.7)] + \text{Var}(K \times 0.7)           \\
+		              & = \text{E}[K \times 0.21] + \paren{(0.7)^2 \times \text{Var}(K)}               \\
+		              & = \paren{0.21 \times \text{E}[K]} + \paren{0.49 \times \text{Var}(K)}          \\
 		              & = \paren{0.21 \times \frac{6 + 1}{2}} + \paren{0.49 \times \frac{6^2 - 1}{12}} \\
 		              & = \paren{0.21 \times \frac{7}{2}} + \paren{0.49 \times \frac{35}{12}}          \\
 		              & = 0.735 + \paren{0.49 \times 2.9167}                                           \\
