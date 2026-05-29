@@ -1,0 +1,11 @@
+.venv
+
+*/.build/*.aux
+*/.build/*.fdb_latexmk
+*/.build/*.fls
+*/.build/*.log
+*/.build/*.out
+*/.build/*.toc
+*/.build/*.listing
+
+*/indent.log
